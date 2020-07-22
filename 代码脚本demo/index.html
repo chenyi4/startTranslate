@@ -10,14 +10,7 @@
 </body>
 <script>
     var str = `
-    Dear Reader:
-
-Greetings from New York City, from my house to yours. I have been in quarantine since March 17. Even so, I have not been binge watching TV shows—I have been using the time to create surprises for you. I will have a big announcement in my Note from Susan Miller in August, after these eclipses are over and Mercury has turned direct. There will be other surprises coming down the pike, too. I have been using my time alone very productively!
-
-This month’s eclipse on July 4-5 marks the end of the Capricorn-Cancer series of eclipses that have arrived every six months in pairs. The Cancer-Capricorn series first began in July 2018 and will end now. A new family of eclipses is staring up on the Sagittarius-Gemini axis, and we saw the first on June 5, a very tender, emotional full moon lunar eclipse. Both Gemini and Sagittarius are focused on finding truth and justice, so the emphasis will change from the Cancer and Capricorn focus on money, power, and structure.
-
-
-You are a brave soul, facing the difficulties of life with strategic equanimity and quiet determination, qualities that allow you to march forward with grace and fortitude. You may not be aware that you inspire many who come to know you. You have been tested in many ways lately, but that test is almost over.
+    You are a brave soul, facing the difficulties of life with strategic equanimity and quiet determination, qualities that allow you to march forward with grace and fortitude. You may not be aware that you inspire many who come to know you. You have been tested in many ways lately, but that test is almost over.
 
 My mother had the moon in Capricorn, and I once asked her why she never complained when life’s difficulties came her way. She explained that what was happening to her was not her fault, certainly not anyone’s fault—it “just is.” She never asked why she was singled out by the universe to experience turbulent times, for she felt we all have bouts of those from time. She felt it was not productive to worry about things you could not change, but to focus only on the ones you could.
 
@@ -52,16 +45,6 @@ Below are the recent eclipses in your sign and Cancer since 2018. Note which one
 July 12, 2018, in Cancer, 21 degrees, a solar eclipse that affected those born January 12.
 
 January 5, 2019, Capricorn, 15 degrees, a solar eclipse.
-
-July 2, 2019, Cancer, 11 degrees, solar eclipse, that affected those born January 2.
-
-July 16, 2019, Cancer, 24 degrees, lunar eclipse, that affected those born January 15.
-
-December 24-25, 2019, Capricorn, 4 degrees, a solar eclipse.
-
-January 10, 2020, Capricorn, 20 degrees, a full moon lunar eclipse.
-
-June 21, 2020, Cancer, 0 degrees, solar eclipse, affecting those born December 21.
     `;
 
     var arr = str.split(" ");
@@ -72,8 +55,10 @@ June 21, 2020, Cancer, 0 degrees, solar eclipse, affecting those born December 2
     var back = str;
     all.forEach((item) => {
         reg = eval("/"+item[0]+"/gi");
-        back = back.replace(reg,item[1]);
+        back = back.replace(reg,item[1]+'*');
     })
+
+    console.log(back.match(/\*/g).length);
     console.log(back);
 </script>
 </html>

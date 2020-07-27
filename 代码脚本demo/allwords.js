@@ -518,5 +518,6 @@ var all = [
     ["opportunity", "机会"],
     ["heating up", "升温"],
     ["announce", "宣布"],
-    ["At the time", "在那时"]
+    ["At the time", "在那时"],
+    ["rickety", "不结实的"]
 ];

@@ -19,3 +19,4 @@
 5.单体
 6.Java单体应用,Docker,SpringBoot
 7.分布式部署
+8.分布式数据库 pingcap

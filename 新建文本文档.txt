@@ -20,3 +20,7 @@
 6.Java单体应用,Docker,SpringBoot
 7.分布式部署
 8.分布式数据库 pingcap
+9.git 社区版（开源）
+10.bom（物料清单）
+11.子件工单下达
+

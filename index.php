@@ -12,10 +12,22 @@
                 
             }
             if(strstr($a, '.txt')){
+                $file = fopen($a, 'r');
+                $content = '';
+                $createtime = fileatime($a);
+                while(!feof($file)){
+                    $content .= fgets($file, 1024);
+                }
+                fclose($file);
                 $currentArr[count($currentArr)] = [
                     "name" => $v,
-                    "text" => true
+                    "text" => true,
+                    "src" => $a,
+                    // "content" =>$content,
+                    "createtime" => $createtime,
+                    "trueTime" => date("Y-m-d H:i:s",$createtime)
                 ];
+
             }
             if(is_dir($a)){
                 if($v=='.' || $v=='..'){

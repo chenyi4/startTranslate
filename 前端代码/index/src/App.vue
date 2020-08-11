@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <MobileHome></MobileHome>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import MobileHome from './components/MobileHome.vue';
 import { panel } from '@/api/index'
 
 const back = panel.save({
@@ -19,12 +21,17 @@ back.then((value) => {
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    MobileHome
   }
 }
 </script>
 
 <style lang="scss">
+body{
+  padding: 0px;
+  margin: 0px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

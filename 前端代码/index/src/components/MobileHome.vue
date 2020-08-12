@@ -110,7 +110,7 @@ export default {
                 top: 20px;
                 font-size: 20px;
                 color: white;
-                right: 5%;
+                right: 5.5%;
             }
         }
     }

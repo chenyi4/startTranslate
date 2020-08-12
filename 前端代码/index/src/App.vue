@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <MobileHome></MobileHome>
+    <!-- <MobileHome></MobileHome> -->
+    <TableHome></TableHome>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import MobileHome from './components/MobileHome.vue';
+import TableHome from './components/TableHome.vue';
 import { panel } from '@/api/index'
 
 const back = panel.save({
@@ -18,11 +20,13 @@ const back = panel.save({
 back.then((value) => {
   console.log(value);
 });
+
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    MobileHome
+    MobileHome,
+    TableHome
   }
 }
 </script>
@@ -31,7 +35,7 @@ export default {
 body{
   padding: 0px;
   margin: 0px;
-  background: #624b5d;
+  // background: #624b5d;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -39,7 +43,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  // margin-top: 60px;
   
 }
 </style>

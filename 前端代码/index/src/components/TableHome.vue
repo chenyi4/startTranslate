@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-       <img  src="./../assets/table.jpg">
+       <!-- <img  src="./../assets/table.jpg"> -->
        <div class="center">
            <div class="center-box">
                <div class="line line-1">

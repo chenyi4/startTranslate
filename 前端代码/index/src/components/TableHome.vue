@@ -5,9 +5,11 @@
            <div class="center-box">
                <div class="line line-1">
                    <div class="pic"></div>
-                   <div class="title">All About Eclipses for Coping with Them</div>
-                   <div class="line"></div>
-                   <div class="content">All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them</div>
+                   <div>
+                       <div class="title">All About Eclipses for Coping with Them</div>
+                       <div class="line"></div>
+                       <div class="content">All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them</div>
+                   </div>
                </div>
                <div class="line line-2">
                    <div class="content">

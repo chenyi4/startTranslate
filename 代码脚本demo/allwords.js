@@ -543,5 +543,19 @@ var all = [
     ["accomplish", "完成"],
     ["average", "正常的/普通的"],
     ["inheritance", "继承"],
-    ["refunds", "退款"]
+    ["refunds", "退款"],
+    ["Mountain Goat", "山羊"],
+    ["symbolizes", "象征"],
+    ["ascend to", "上升到"],
+    ["peaks", "高峰"],
+    ["depths of the sea", "深海"],
+    ["narrows", "变窄"],
+    ["approach", "靠近"],
+    ["pinnacle", "顶峰"],
+    ["pass", "通过"],
+    ["turtles", "海龟"],
+    ["given up", "（given up）放弃"],
+    ["legs", "腿"],
+    ["on the climb", "在攀登"],
+    ["surefootedness", "踏实"]
 ];

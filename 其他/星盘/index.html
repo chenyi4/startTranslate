@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1001" height="801" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+</body>
+<script>
+    var canvas =document.getElementById("myCanvas");
+    var draw = canvas.getContext("2d");
+    var r = 340;
+    var center = [500, 400];
+    var rCut = 40;
+    
+    draw.beginPath();
+    draw.strokeStyle="#aaaaaa";
+    draw.arc(center[0],center[1],r-rCut, 0 ,2*Math.PI);
+    draw.stroke();
+
+
+    draw.beginPath();
+    draw.strokeStyle="#aaaaaa";
+    draw.arc(center[0],center[1],r, 0 ,2*Math.PI);
+    draw.stroke();
+
+    draw.beginPath(); //横线
+    draw.lineCap="round";
+    draw.moveTo(160,400);
+    draw.lineTo(840,400);
+    draw.stroke();
+
+
+    draw.beginPath(); //横线
+    draw.lineCap="round";
+    draw.moveTo(160,400);
+    draw.lineTo(840,400);
+    draw.stroke();
+
+
+
+    // var ctx=c.getContext("2d");
+    // ctx.beginPath();
+    // ctx.lineCap="round";
+    // ctx.moveTo(20,20);
+    // ctx.lineTo(20,200);
+    // ctx.stroke();
+
+
+
+
+</script>
+</html>

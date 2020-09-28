@@ -2,6 +2,7 @@
   <div class="hello">
       <div>
           <input/>
+          <div class="submit">提交</div>
       </div>
       <div class="box">
           <div class="col" v-for="(item, num) in 122" :key="num" :style="returnTrans(num)">11111111111</div>
@@ -25,7 +26,7 @@ export default {
         num = (Math.random(10) > 0.5)?num:-num;
       }
       
-      var back = 'transform:rotate('+num+'deg);';
+      var back = 'transform:rotate('+num+'deg);background-color:rgba(46, 204, '+113+', '+(0.2+i/130)+');';
       if(num < 0){
       }else{
          back =  back + 'text-align:right;';
@@ -106,12 +107,30 @@ a {
 }
 
 .hello .box .col:hover{
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.7) !important;
   color: white;
   transform: rotate(0deg) !important;
   text-align: left !important;
-  border-color: black;
-  z-index: 8;
+  border-color: black !important;
+  z-index: 8 !important;
+}
+
+.hello .submit{
+    width: 184px;
+    display: inline-block;
+    height: 28px;
+    background-color: rgb(22, 160, 133);
+    background-clip: border-box;
+    color: rgb(236, 240, 241);
+    border-radius: 0px;
+    text-align: center;
+    font-size: medium;
+    margin-left: 20px;
+    position: relative;
+    top: -2px;
+    line-height: 28px;
+    cursor: pointer;
+    border: 5px double rgb(52, 73, 94);
 }
 @media screen and (max-width: 600px) {
   .hello .box{
@@ -131,6 +150,12 @@ a {
     left: 5%;
     height: 40px;
     line-height: 40px;
+  }
+  .hello .submit{
+    margin-top: 15px;
+    width: 90%;
+    margin-left: 0px;
+    left: 5%;
   }
 }
 </style>

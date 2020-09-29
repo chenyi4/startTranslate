@@ -8,9 +8,16 @@ class Panel {
         }
     }
     save(project){
-        return jsonAPI._request('/login', project, this._conf);
+        return jsonAPI._request('/login.php', project, this._conf);
     }
-     
+    
+    getAll(project){
+        return jsonAPI._request('/index.php', project, this._conf);
+    } 
+
+    getDetail(project){
+        return jsonAPI._request('/detail.php', project, this._conf);
+    }
     // save(project){
     //     return jsonAPI.requestWithAuth('/list', null, this._conf);
     // }

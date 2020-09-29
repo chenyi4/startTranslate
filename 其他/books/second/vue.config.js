@@ -9,9 +9,9 @@ module.exports = {
         // target: 'http://10.12.42.127:8090/', //
         target: 'http://localhost:8082',
         changeOrigin: true,
-        pathRewrite: {
-            "/login": "/"
-        }
+        // pathRewrite: {
+        //     "/login.php": "/"
+        // }
       }
     }
    },

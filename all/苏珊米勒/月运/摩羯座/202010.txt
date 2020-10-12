@@ -1,16 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script src="./allwords.js"></script>
-<body>
-    
-</body>
-<script>
-    var str = `
-    A NOTE FROM SUSAN MILLER
+
+A NOTE FROM SUSAN MILLER
 OCTOBER 2020
 
 Dear Reader:
@@ -161,28 +150,4 @@ Read more: https://www.astrologyzone.com/forecasts/capricorn-horoscope-for-octob
 
 
 
-   ` ;
 
-    var arr = str.split(" ");
-    // arr.forEach((item) => {
-       
-    //     console.log(item);
-    // });
-    var back = str;
-    var i = 0;
-    all.forEach((item) => {
-        reg = eval("/"+item[0]+"/gi");
-        var trans = back.replace(reg, item[1]+'*');
-        if(trans == back){
-
-        }else{
-            back = trans;
-            i = i + 1;
-        }
-    })
-
-    console.log("使用了"+i+"个单词");
-    console.log("翻译了"+back.match(/\*/g).length+"个单词");
-    console.log(back);
-</script>
-</html>

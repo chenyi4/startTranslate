@@ -37,7 +37,16 @@
                         <div class="triggletop-left"></div>
                         <div class="triggletop-right"></div>
                     </div>
-
+                    <div class="triggle">
+                        <div class="triggle-top"></div>
+                        <div class="triggle-bottom"></div>
+                        <div class="triggle-left"></div>
+                    </div>
+                    <div class="triggle2">
+                        <div class="triggle-top"></div>
+                        <div class="triggle-bottom"></div>
+                        <div class="triggle-left"></div>
+                    </div>
                </div>
            </div>
        </div>
@@ -226,7 +235,9 @@ export default {
                     width: 52px;
                     height: 52px;
                     position: relative;
-                    // transform: rotate(90deg) scale(0.9);
+                    transform: rotate(90deg) scale(0.7);
+                    left: 15%;
+                    top: -23px;
                     .trigglebottom,
                     .trigglebottom-left,
                     .trigglebottom-right,
@@ -243,13 +254,13 @@ export default {
                     .trigglebottom-right{
                         transform: rotate(60deg);
                         left: 42px;
-                        top: 12;
+                        top: 12px;
                     }
                     .triggletop-right,
                     .trigglebottom-left{
                         transform: rotate(-60deg);
-                        left: -2;
-                        top: 12;
+                        left: -2px;
+                        top: 12px;
                     }
                     .trigglebottom-left{
                         left: 43px;
@@ -261,6 +272,44 @@ export default {
                     }
                     .trigglebottom{
                         top: 50px;
+                    }
+                }
+                .triggle,.triggle2{
+                    width: 100px;
+                    height: 100px;
+                    position: relative;
+                    top: -64px;
+                    left: 20%;
+                    // transform: scale(0.8);
+                    .triggle-top,
+                    .triggle-bottom,
+                    .triggle-left{
+                        width: 30px;
+                        height: 1px;
+                        background:#a09fef;
+                        position: absolute;
+                        transform: rotate(33deg);
+                        top: 25px;
+                    }
+                    .triggle-bottom{
+                        transform: rotate(-33deg);
+                        top: 41px;
+                    }
+                    .triggle-left{
+                        transform: rotate(90deg);
+                        top: 33px;
+                        left: -12px;
+                    }
+                }
+                .triggle2{
+                    position: relative;
+                    top: -165px;
+                    transform: scale(0.6);
+                    left: calc(20% - 19px);
+                    .triggle-top,
+                    .triggle-bottom,
+                    .triggle-left{
+                        height: 2px;
                     }
                 }
             }

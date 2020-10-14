@@ -185,5 +185,9 @@ export default {
         }
     }
 }
-
+@media screen and (max-width: 500px) {
+    .home {
+        display: none;
+    }
+}
 </style>

@@ -36,7 +36,7 @@ export default {
 body{
   padding: 0px;
   margin: 0px;
-  // background: #624b5d;
+  background: white
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -46,5 +46,10 @@ body{
   color: #2c3e50;
   // margin-top: 60px;
   
+}
+@media screen and (max-width: 500px) {
+  body{
+    background: #624b5d;
+  }
 }
 </style>

@@ -35,8 +35,7 @@
         top: 20px;
         left: 1px;
     }
-
-
+    
     /*三角形*/
     .triggle{
         width: 100px;
@@ -46,7 +45,7 @@
     .triggle .top, .triggle .bottom, .triggle .left{
         width: 30px;
         height: 2px;
-        background: #924545;
+        background:#a09fef;
         position: absolute;
         transform: rotate(33deg);
         top: 25px;
@@ -60,6 +59,49 @@
         top: 33px;
         left: -12px;
     }
+
+    /*五边形*/
+    .five-triggle{
+        width: 52px;
+        height: 52px;
+        position: relative;
+        transform: rotate(90deg) scale(0.9);
+    }
+    .five-triggle .bottom,
+    .five-triggle .bottom-left,
+    .five-triggle .bottom-right,
+    .five-triggle .top,
+    .five-triggle .top-left,
+    .five-triggle .top-right{
+        width: 30px;
+        height: 2px;
+        left: 20px;
+        background: #a09fef;
+        position: absolute;
+    }
+    .five-triggle .top-left,
+    .five-triggle .bottom-right{
+        transform: rotate(60deg);
+        left: 42px;
+        top: 12;
+    }
+    .five-triggle .top-right,
+    .five-triggle .bottom-left{
+        transform: rotate(-60deg);
+        left: -2;
+        top: 12;
+    }
+    .five-triggle .bottom-left{
+        left: 43px;
+        top: 38px;
+    }
+    .five-triggle .bottom-right{
+        left: -2px;
+        top: 38px;
+    }
+    .five-triggle .bottom{
+        top: 50px;
+    }
 </style>
 <body>
     <div class="arrow"></div>
@@ -68,6 +110,13 @@
         <div class="bottom"></div>
         <div class="left"></div>
     </div>
-
+    <div class="five-triggle">
+        <div class="bottom"></div>
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+        <div class="top"></div>
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+    </div>
 </body>
 </html>

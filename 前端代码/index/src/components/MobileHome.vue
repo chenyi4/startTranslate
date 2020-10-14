@@ -36,7 +36,7 @@ export default {
     width: 100%;
     background: #624b5d;
     box-sizing: border-box;
-    position: absolute;
+    position: relative;
     display: none;
     // padding: 20px 30px;
     img{

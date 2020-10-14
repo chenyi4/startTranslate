@@ -27,6 +27,17 @@
                <div class="line line-3">
                    <div class="pic"></div>
                    <div class="title"> All About Eclipses for Coping with ThemAll About Eclipses for Coping</div>
+                   <div class="arrow"></div>
+                   <!-- 五边形 -->
+                   <div class="five-triggle">
+                        <div class="trigglebottom"></div>
+                        <div class="trigglebottom-left"></div>
+                        <div class="trigglebottom-right"></div>
+                        <div class="triggletop"></div>
+                        <div class="triggletop-left"></div>
+                        <div class="triggletop-right"></div>
+                    </div>
+
                </div>
            </div>
        </div>
@@ -53,7 +64,7 @@ export default {
     }
     .center{
         width: 90%;
-        min-width: 1000px;
+        min-width: 750px;
         max-width: 1400px;
         padding-top: 52.7%;
         opacity: 0.8;
@@ -180,6 +191,123 @@ export default {
                     height: auto;
                     overflow: hidden;
                     position: relative;
+                }
+                .arrow{
+                    width: 40px;
+                    height: 40px;
+                    position: relative;
+                    left: calc(100% - 150px);
+                    margin-top: 6px;
+                    &::after{
+                        content: '';
+                        display: block;            
+                        width: 16px;            
+                        height: 16px;        
+                        position: absolute;    
+                        left: 62px;
+                        top: 12px;
+                        border-right: 2px solid #924545;            
+                        border-top: 2px solid #924545;            
+                        -webkit-transform: rotate(45deg); /*箭头方向可以自由切换角度*/            
+                        transform: rotate(45deg);
+                    }
+                    &::before{
+                        content: '';
+                        display: block;
+                        width: 82px;
+                        height: 2px;
+                        background-color: #924545;
+                        position: absolute;
+                        top: 20px;
+                        left: 1px;
+                    }
+                }
+                .five-triggle{
+                    width: 52px;
+                    height: 52px;
+                    position: relative;
+                    // transform: rotate(90deg) scale(0.9);
+                    .trigglebottom,
+                    .trigglebottom-left,
+                    .trigglebottom-right,
+                    .triggletop,
+                    .triggletop-left,
+                    .triggletop-right{
+                        width: 30px;
+                        height: 2px;
+                        left: 20px;
+                        background: #a09fef;
+                        position: absolute;
+                    }
+                    .triggletop-left,
+                    .trigglebottom-right{
+                        transform: rotate(60deg);
+                        left: 42px;
+                        top: 12;
+                    }
+                    .triggletop-right,
+                    .trigglebottom-left{
+                        transform: rotate(-60deg);
+                        left: -2;
+                        top: 12;
+                    }
+                    .trigglebottom-left{
+                        left: 43px;
+                        top: 38px;
+                    }
+                    .trigglebottom-right{
+                        left: -2px;
+                        top: 38px;
+                    }
+                    .trigglebottom{
+                        top: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:800px) {
+    .home{
+        .center{
+            .center-box{
+                .line-1{
+                    .pic{
+                        margin-top: 15px;
+                        padding-top: 75%;
+                    }
+                    .title{
+                        font-size: 14px;
+                    }
+                    .content{
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 5;
+                        font-size: 1vh;
+                        -webkit-box-orient: vertical;
+                    }
+                    .line{
+                        margin-top: 12px;
+                    }
+                }
+                .line-2{
+                    .content{
+                        margin-top: 7px;
+                    }
+                    .head{
+                        margin-top: 22%;
+                        .name{
+                            width: calc(100% - 50px);
+                            left: 25px;
+                            .top{
+                                font-size: 12px;
+                            }
+                        }
+                        .pic{
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
                 }
             }
         }

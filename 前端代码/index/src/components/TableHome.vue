@@ -27,26 +27,29 @@
                <div class="line line-3">
                    <div class="pic"></div>
                    <div class="title"> All About Eclipses for Coping with ThemAll About Eclipses for Coping</div>
-                   <div class="arrow"></div>
-                   <!-- 五边形 -->
-                   <div class="five-triggle">
-                        <div class="trigglebottom"></div>
-                        <div class="trigglebottom-left"></div>
-                        <div class="trigglebottom-right"></div>
-                        <div class="triggletop"></div>
-                        <div class="triggletop-left"></div>
-                        <div class="triggletop-right"></div>
+                    <div class="arrow"></div>
+                    <!-- 五边形 -->
+                    <div class="triggle-box">
+                            <div class="five-triggle">
+                                <div class="trigglebottom"></div>
+                                <div class="trigglebottom-left"></div>
+                                <div class="trigglebottom-right"></div>
+                                <div class="triggletop"></div>
+                                <div class="triggletop-left"></div>
+                                <div class="triggletop-right"></div>
+                            </div>
+                            <div class="triggle">
+                                <div class="triggle-top"></div>
+                                <div class="triggle-bottom"></div>
+                                <div class="triggle-left"></div>
+                            </div>
+                            <div class="triggle2">
+                                <div class="triggle-top"></div>
+                                <div class="triggle-bottom"></div>
+                                <div class="triggle-left"></div>
+                            </div>
                     </div>
-                    <div class="triggle">
-                        <div class="triggle-top"></div>
-                        <div class="triggle-bottom"></div>
-                        <div class="triggle-left"></div>
-                    </div>
-                    <div class="triggle2">
-                        <div class="triggle-top"></div>
-                        <div class="triggle-bottom"></div>
-                        <div class="triggle-left"></div>
-                    </div>
+                    <div class="triggle3"></div>
                </div>
            </div>
        </div>
@@ -73,10 +76,9 @@ export default {
     }
     .center{
         width: 90%;
-        min-width: 750px;
+        min-width: 650px;
         max-width: 1400px;
         padding-top: 52.7%;
-        opacity: 0.8;
         position: absolute;
         top: 65px;
         left: 50%;
@@ -181,16 +183,18 @@ export default {
                  }
             }
             .line-3{
-                 &:after{
-                     display: none;
-                 }
+                &:after{
+                    display: none;
+                }
+                cursor: pointer;
                 width: 52%;
                 .pic{
                     width: 68%;
                     height: 62%;
                     position: relative;
                     left: 16%;
-                    background: grey;                    
+                    background: grey; 
+                    transition: all ease 0.5s;                   
                 }
                 .title{
                     width: 68%;
@@ -199,6 +203,7 @@ export default {
                     left: 20%;
                     height: auto;
                     overflow: hidden;
+                    transition: transform ease 0.3s 0.15s;
                     position: relative;
                 }
                 .arrow{
@@ -207,6 +212,9 @@ export default {
                     position: relative;
                     left: calc(100% - 150px);
                     margin-top: 6px;
+                    transition: all ease 0.35s 0.45s;
+                    cursor: pointer;
+                    transform: rotate(0deg);
                     &::after{
                         content: '';
                         display: block;            
@@ -238,6 +246,7 @@ export default {
                     transform: rotate(90deg) scale(0.7);
                     left: 15%;
                     top: -23px;
+                    transition: all ease 0.3s;
                     .trigglebottom,
                     .trigglebottom-left,
                     .trigglebottom-right,
@@ -279,8 +288,8 @@ export default {
                     height: 100px;
                     position: relative;
                     top: -64px;
+                    transition: all ease 0.3s 0.2s;
                     left: 20%;
-                    // transform: scale(0.8);
                     .triggle-top,
                     .triggle-bottom,
                     .triggle-left{
@@ -310,6 +319,131 @@ export default {
                     .triggle-bottom,
                     .triggle-left{
                         height: 2px;
+                    }
+                }
+                .triggle3{
+                    width: 0;
+                    height: 0;
+                    border-top: 8px solid transparent;
+                    border-left: 12px solid #924545;
+                    border-bottom: 8px solid transparent;
+                    position: absolute;
+                    left: 28%;
+                    bottom: 30px;
+                }
+                &:hover{
+                    .pic{
+                        transform: scale(.96);
+                    }   
+                    .arrow{
+                         transform: translateY(-10px) translateX(-10px) rotate(45deg);
+                    }
+                    .title{
+                        transform: scale(1.06) translateY(-10px);
+                    }
+                    .five-triggle{
+                        transform: rotate(90deg) scale(0.72) rotateX(540deg) translateX(-10px) translateY(-20px);
+                    }
+                    .triggle{
+                         transform: rotateY(180deg) scale(0.82) rotateX(170deg) translateY(40px);
+                    }
+                    .triggle2{
+                         transform: rotateY(180deg) scale(0.52) rotateX(170deg) translateY(42px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width:1088px) {
+    .home{
+        .center{
+            .center-box{
+                .line-1{
+                    .pic{
+                        margin-top: 30px;
+                    }
+                }
+                .line-2{
+                    .content{
+                        margin-top: 14px;
+                    }
+                    .head{
+                        margin-top: 29%;
+                        .name{
+                            width: calc(100% - 50px);
+                            left: 25px;
+                            top: 3px;
+                            .top{
+                                font-size: 17px;
+                            }
+                        }
+                        .pic{
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
+                }
+                .line-3{
+                    .triggle-box{
+                        position: relative;
+                        top: -8%;
+                        left: -3%;
+                        transform: scale(0.9);
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:925px) {
+    .home{
+        .center{
+            .center-box{
+                .line-1{
+                    .title{
+                        font-size: 15px;
+                    }
+                }
+                .line-2{
+                    .head{
+                        .pic{
+                            width: 35px;
+                            height: 35px;
+                        }
+                        .name{
+                            top: 0px;
+                            .top{
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+                .line-3{
+                    .title{
+                        font-size: 16px;
+                    }
+                    .arrow{
+                        transform: scale(0.75);
+                        left: calc(100% - 120px);
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:850px) {
+    .home{
+        .center{
+            .center-box{
+                .line-3{
+                    .triggle-box{
+                        transform: scale(0.78);
+                        left: -33px;
+                        top: -52px;
                     }
                 }
             }
@@ -358,13 +492,72 @@ export default {
                         }
                     }
                 }
+                .line-3{
+                    .triggle-box{
+                        transform: scale(0.78);
+                        left: -33px;
+                        top: -62px;
+                    } 
+                }
             }
         }
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width:755px) {
+    .home{
+        .center{
+            .center-box{
+                .line-1{
+                    .pic{
+                        margin-top: 10px;
+                        padding-top: 68%;
+                    }
+                    .title{
+                        font-size: 15px;
+                    }
+                }
+                .line-2{
+                    .content{
+                        margin-top: 7px;
+                        font-size: 15px;
+                    }
+                    .head{
+                        margin-top: 24%;
+                        .name{
+                            width: calc(100% - 50px);
+                            left: 22px;
+                            .top{
+                                font-size: 13px;
+                            }
+                        }
+                        .pic{
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                }
+                .line-3{
+                    .title{
+                        margin-top: 5%;
+                        font-size: 15px;
+                    }
+                    .triggle-box{
+                        transform: scale(0.78);
+                        left: -33px;
+                        top: -54px;
+                    } 
+                    .arrow{
+                        margin-top: -3%;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 590px) {
     .home {
         display: none;
     }
 }
+
 </style>

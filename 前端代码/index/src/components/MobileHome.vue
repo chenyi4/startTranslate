@@ -116,7 +116,7 @@ export default {
         }
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 590px) {
     .home {
         display: block;
     }

@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /*箭头*/
+    .arrow{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        /* background: red; */
+    }
+    .arrow::after{
+        content: '';
+        display: block;            
+        width: 20px;            
+        height: 20px;        
+        position: absolute;    
+        left: 59px;
+        top: 10px;
+        border-right: 2px solid #924545;            
+        border-top: 2px solid #924545;            
+        -webkit-transform: rotate(45deg); /*箭头方向可以自由切换角度*/            
+        transform: rotate(45deg);
+    }
+    .arrow::before{
+        content: '';
+        display: block;
+        width: 82px;
+        height: 2px;
+        background-color: #924545;
+        position: absolute;
+        top: 20px;
+        left: 1px;
+    }
+
+
+    /*三角形*/
+    .triggle{
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+    .triggle .top, .triggle .bottom, .triggle .left{
+        width: 30px;
+        height: 2px;
+        background: #924545;
+        position: absolute;
+        transform: rotate(33deg);
+        top: 25px;
+    }
+    .triggle .bottom{
+        transform: rotate(-33deg);
+        top: 41px;
+    }
+    .triggle .left{
+        transform: rotate(90deg);
+        top: 33px;
+        left: -12px;
+    }
+</style>
+<body>
+    <div class="arrow"></div>
+    <div class="triggle">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+    </div>
+
+</body>
+</html>

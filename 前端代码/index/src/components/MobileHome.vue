@@ -37,6 +37,7 @@ export default {
     background: #624b5d;
     box-sizing: border-box;
     position: absolute;
+    display: none;
     // padding: 20px 30px;
     img{
         width: 100%;
@@ -113,6 +114,11 @@ export default {
                 right: 5.5%;
             }
         }
+    }
+}
+@media screen and (max-width: 500px) {
+    .home {
+        display: block;
     }
 }
 </style>

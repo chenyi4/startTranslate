@@ -46,6 +46,8 @@ export default {
     background:white;
     position: relative;
     height: auto;
+    max-width: 1200px;
+    margin: 0 auto;
     img{
         width: 100%;
     }
@@ -92,7 +94,7 @@ export default {
                     width: calc(100% - 60px);
                     position: relative;
                     margin-top: 50px;
-                    padding-top: 90%;
+                    padding-top: 85%;
                     opacity: 0.2;
                     background: blue;
                 }
@@ -110,7 +112,7 @@ export default {
                 .content{
                     width: 80%;
                     height: auto;
-                    height: 5vw;
+                    height: 9vw;
                     overflow: hidden;
                     margin-top: 2vw;
                     font-size: 13px;
@@ -175,7 +177,7 @@ export default {
                     font-size: 19px;
                     margin-top: 8%;
                     left: 20%;
-                    height: 9%;
+                    height: auto;
                     overflow: hidden;
                     position: relative;
                 }
@@ -183,4 +185,5 @@ export default {
         }
     }
 }
+
 </style>

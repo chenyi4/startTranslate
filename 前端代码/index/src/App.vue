@@ -47,7 +47,7 @@ body{
   // margin-top: 60px;
   
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 590px) {
   body{
     background: #624b5d;
   }

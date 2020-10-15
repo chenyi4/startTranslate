@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <!-- <img  src="./../assets/mobile.jpg"> -->
-      <div class="box">
+      <div :class="{'box':true, 'box-show': isShow}">
           <div class="more">more</div>
           <div class="box-size">
             <div class="line">202007</div>
@@ -18,15 +18,26 @@
               <div class="right-name">翻译</div>
           </div>
       </div>
-      
   </div>
 </template>
 
 <script>
+//移动端取5条数据
 export default {
   name: 'MobileHome',
   props: {
     msg: String
+  },
+  data() {
+      return {
+          isShow: true
+      }
+  },
+  created(){
+      const self = this;
+      setTimeout(()=>{
+          self.isShow = false;
+      }, 400);
   }
 }
 </script>
@@ -34,7 +45,7 @@ export default {
 <style scoped lang="scss">
 .home{
     width: 100%;
-    background: #624b5d;
+    // background: #624b5d;
     box-sizing: border-box;
     position: relative;
     display: none;
@@ -47,6 +58,7 @@ export default {
         // background: #908cd6;
         top: 34px;
         opacity: 1;
+        transition: all ease 0.2s;
         .more{
             right: 10px;
             font-size: 23px;
@@ -55,6 +67,7 @@ export default {
             color: white;
             font-weight: bold;
             margin-bottom: 3px;
+            transition: all ease-in-out 0.4s 0.8s;
         }
         .box-size{
             background: #908cd6;
@@ -71,6 +84,12 @@ export default {
             font-size: 6.5vw;
             padding-top: 3.2vw;
             padding-bottom: 1.7vw;
+            @for $i from 0 through 20
+            {
+                &:nth-of-type(#{$i}){
+                    transition: transform ease-in 0.5s 0.13s*$i, opacity ease 0.3s 0.14s*$i;
+                }
+            }
             border-bottom: 1px solid white;
             &:after{
                 content: '';
@@ -105,6 +124,7 @@ export default {
                 font-size: 22px;
                 color: white;
                 left: 7.5%;
+                transition: all ease 0.3s 1.2s;
             }
             .right-name{
                 position: absolute;
@@ -112,6 +132,25 @@ export default {
                 font-size: 20px;
                 color: white;
                 right: 5.5%;
+                transition: all ease 0.3s 1.4s;
+            }
+        }
+    }
+    .box-show{
+        opacity: 0;
+        .line{
+            transform: rotateX(360deg) translateX(-20px);
+            opacity: 0;
+        }
+        .more{
+            right: -300px;
+        }
+        .textShow{
+            .left-name{
+                left: -200px;
+            }
+            .right-name{
+                right: -10%;
             }
         }
     }
@@ -119,6 +158,8 @@ export default {
 @media screen and (max-width: 590px) {
     .home {
         display: block;
+        margin-top: 40px;
+        
     }
 }
 </style>

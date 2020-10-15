@@ -1,7 +1,7 @@
 <template>
   <div class="home">
        <!-- <img  src="./../assets/table.jpg"> -->
-       <div class="center">
+       <div :class="{'center':true, 'center-change':isShow}">
            <div class="center-box">
                <div class="line line-1">
                    <div class="pic"></div>
@@ -60,6 +60,17 @@ export default {
   name: 'TableHome', //桌面显示
   props: {
     msg: String
+  },
+  data() {
+      return {
+          isShow: true
+      }
+  },
+  created(){
+      const self = this;
+      setTimeout(()=>{
+          self.isShow = false;
+      }, 400);
   }
 }
 </script>
@@ -83,6 +94,7 @@ export default {
         top: 65px;
         left: 50%;
         transform: translateX(-50%);
+        transition: all ease 0.4s;
         .center-box{
             width: 100%;
             height: 100%;
@@ -99,7 +111,10 @@ export default {
                 display: inline-block;
                 background: white;
                 position: relative;
+                overflow: hidden;
                 vertical-align: top;
+                top: 0px;
+                opacity: 1;
                 &:after{
                     width: 1px;
                     height: 100%;
@@ -110,8 +125,12 @@ export default {
                     opacity: 0.5;
                     background: grey;
                 }
+                overflow: hidden;
             }
             .line-1{
+                cursor: pointer;
+                opacity: 1;
+                transition: top ease 0.2s 0.25s,width ease 0.2s, opacity ease 0.8s;
                 .pic{
                     width: calc(100% - 60px);
                     position: relative;
@@ -119,17 +138,20 @@ export default {
                     padding-top: 85%;
                     opacity: 0.2;
                     background: blue;
+                    transition: all ease 0.2s 0.1s;
                 }
                 .title{
                     width: 80%;
                     margin-top: 3vw;
                     font-size: 17px;
+                    transition: all ease 0.2s 0.15s;
                 }
                 .line{
                     width: 88%;
                     height: 2px;
                     margin-top: 2.6vw;
                     background: lightcoral;
+                    transition: all ease 0.2s 0.3s, width ease 0.2s;
                 }
                 .content{
                     width: 80%;
@@ -138,10 +160,24 @@ export default {
                     overflow: hidden;
                     margin-top: 2vw;
                     font-size: 13px;
+                    transition: all ease 0.2s 0.45s;
+                }
+                &:hover{
+                    transform: scale(0.97);
+                    .pic,.title,.line,.content{
+                        transform: translateY(-10px);
+                    }
+                    .line{
+                        width: 50%;
+                    }
+
                 }
             }
             .line-2{
                  width: 26%;
+                 cursor: pointer;
+                 opacity: 1;
+                 transition: top ease 0.2s 0.55s,width ease 0.2s 0.3s, opacity ease 0.8s 0.3s;
                  .content{
                      width: 84%;
                      height: 65%;
@@ -150,12 +186,14 @@ export default {
                      margin-top: 12%;
                      font-size: 17px;
                      overflow: hidden;
+                     transition: all ease 0.3s;
                  }
                  .head{
                      width: 84%;
                      position: relative;
                      left: 8%;
                      margin-top: 18%;
+                     transition: all ease 0.3s;
                      .pic{
                          width: 50px;
                          height: 50px;
@@ -164,6 +202,7 @@ export default {
                          border-radius: 50px;
                          background: red;
                          display: inline-block;
+                         transition: all ease 0.2s 0.2s;
                      }
                      .name{
                          display: inline-block;
@@ -174,15 +213,38 @@ export default {
                          top: 6px;
                          .top{
                              font-size: 17px;
+                             transition: all ease 0.2s 0.3s;
                          }
                          .bottom{
                              font-size: 12px;
                              margin-top: 3px;
+                             transition: all ease 0.2s 0.4s;
+                         }
+                     }
+                 }
+                 &:hover{
+                     .content{
+                         transform: scale(0.96);
+                     }
+                     .head{
+                         transform: translateY(5px);
+                         .pic{
+                             transform: translateY(-7px);
+                         }
+                         .name{
+                             .top{
+                                 transform: translateY(-7px);
+                             }
+                             .bottom{
+                                 transform: translateY(-7px);
+                             }
                          }
                      }
                  }
             }
             .line-3{
+                opacity: 1;
+                transition: top ease 0.2s 0.75s, width ease 0.2s 0.5s, opacity ease 0.8s 0.5s;
                 &:after{
                     display: none;
                 }
@@ -336,7 +398,7 @@ export default {
                         transform: scale(.96);
                     }   
                     .arrow{
-                         transform: translateY(-10px) translateX(-10px) rotate(45deg);
+                         transform: translateY(-10px) translateX(-10px) rotate(90deg);
                     }
                     .title{
                         transform: scale(1.06) translateY(-10px);
@@ -354,9 +416,19 @@ export default {
             }
         }
     }
+    .center-change{
+        // opacity: 0.2;
+        .center-box{
+             .line{
+                width: 0%;
+                transition: all ease 0.5s 0.3s;
+                opacity: 0;
+                height: 0%;
+                top: -100px;
+            }
+        }
+    }
 }
-
-
 
 @media screen and (max-width:1088px) {
     .home{

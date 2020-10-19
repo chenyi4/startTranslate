@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!--  -->
-    <TableHome></TableHome>
-    <MobileHome></MobileHome>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <TableHome></TableHome>
+    <MobileHome></MobileHome> -->
+    <!-- -->
+    <DetailList></DetailList>
   </div>
 </template>
 
@@ -12,11 +12,13 @@
 import HelloWorld from './components/HelloWorld.vue'
 import MobileHome from './components/MobileHome.vue';
 import TableHome from './components/TableHome.vue';
+
+import DetailList from './components/DetailList.vue';
 import { panel } from '@/api/index'
 
 const back = panel.save({
    type: "all",
-  });
+});
 
 back.then((value) => {
   console.log(value);
@@ -27,7 +29,8 @@ export default {
   components: {
     HelloWorld,
     MobileHome,
-    TableHome
+    TableHome,
+    DetailList
   }
 }
 </script>

@@ -1008,38 +1008,63 @@ body{
     background: brown;
     display: inline-block;
     margin-left: 20px;
-    animation: go14 1s cubic-bezier(.175, .885, .32, 1) 0s 1;
+    /* animation: go14 1.8s cubic-bezier(.175, .885, .32, 1) 0s infinite; */
     /* infinite */
     animation-fill-mode: both;
 }
-.demo14 .line2{
-    animation-delay: 200ms;
-}
-.demo14 .line3{
-    animation-delay: 400ms;
-}
-.demo14 .line4{
-    animation-delay: 600ms;
-}
-.demo14 .line5{
-    animation: go14-1 1s cubic-bezier(.175, .885, .32, 1) 0s 1;
-    animation-delay: 800ms;
+.demo14 .line1{
+    animation: go14-1 2.8s cubic-bezier(.175, .885, .32, 1) 0s infinite;
     animation-fill-mode: both;
 }
-@keyframes go14{
-    0%{
-       transform: rotateZ(0deg);
-    }
-    100%{
-        transform: rotateZ(60deg);
-    }
+.demo14 .line2{
+    animation: go14-1 2.8s cubic-bezier(.175, .885, .32, 1) 0.2s infinite;
+    animation-fill-mode: both;
 }
+.demo14 .line3{
+    animation: go14-1 2.8s cubic-bezier(.175, .885, .32, 1) 0.4s infinite;
+    animation-fill-mode: both;
+}
+.demo14 .line4{
+    animation: go14-1 2.8s cubic-bezier(.175, .885, .32, 1) 0.6s infinite;
+    animation-fill-mode: both;
+}
+.demo14 .line5{
+    animation: go14-5 2.8s cubic-bezier(.175, .885, .32, 1) 0.8s infinite;
+    animation-fill-mode: both;
+}
+
 @keyframes go14-1{
     0%{
        transform: rotateZ(0deg);
     }
+    10%{
+        transform: rotateZ(60deg);
+    }
+    50%{
+        transform: rotateZ(60deg);
+    }
+    60%{
+        transform: rotateZ(0deg);
+    }
     100%{
+        transform: rotateZ(0deg);
+    }
+}
+@keyframes go14-5{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    10%{
         transform: rotateZ(90deg) translateX(20px);
+    }
+    50%{
+        transform: rotateZ(90deg) translateX(20px);
+    }
+    60%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(0deg);
     }
 }
 </style>

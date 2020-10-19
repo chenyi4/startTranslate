@@ -17,31 +17,56 @@
     </div>
 </template>
 <script>
-
+    var allNumber = 0;
     function set(dom, lists, func){
         var start = dom.offsetTop+80;
         var itemHeight = 49;
         var exchange = 0;
-        var allNumber = 0;
         var length = lists.length;
+        var topHeight = 0;
         
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             if(allNumber == 0){
                 exchange = e.clientY - start;
-                var number = Math.ceil(exchange/15);
-                if(allNumber != number){
-                    allNumber = number;
+                if(Math.abs(exchange)  < 22){
+                    changeDom.style.top = topHeight + exchange*4 + 'px';
                 }
-                if(allNumber < -(length-2) || allNumber > 1 || Math.abs(exchange)< 9){
-                    return false;
-                }
-                changeDom.style.top = ((49*allNumber) + 'px');
-                func(-allNumber);
+
+                // exchange = e.clientY - start;
+                // if(Math.abs(exchange) > 2){
+                //     allNumber = allNumber+((exchange>0)?1:-1);
+                // }
+                
+                // topHeight = (49*allNumber);
+                // changeDom.style.top = (topHeight + 'px');
+                // func(-allNumber);
             }else{
-                // console.log(exchange);
-                console.log(e.clientY - start);
+               
+                // }else{
+                //      allNumber = allNumber+((exchange>0)?1:-1);
+                // }
             }
+         dom.onmouseout = function(e){
+             changeDom.style.top = topHeight + allNumber*49 + 'px';
+         }
+            // 
+            //     
+            //     
+            //     if(allNumber != number){
+            //         allNumber = number;
+            //     }
+            //     if(allNumber < -(length-2) || allNumber > 1 || Math.abs(exchange)< 9){
+            //         return false;
+            //     }
+            //     
+            //     func(-allNumber);
+            // }else{
+            //     console.log(exchange);
+            //     console.log(e.clientY - start);
+            // }
+
+
         }
     }
 
@@ -110,6 +135,7 @@
         },
         methods:{
             changeListMenu(i){
+                console.log(i);
                 this.ListChoose = i+1;
             }
         }
@@ -131,7 +157,7 @@
 .cover-list{
     width: 100%;
     height: 100%;
-    // background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3);
     position: absolute;
     left: 0px;
     top: 0px;
@@ -155,24 +181,26 @@
             position: absolute;
             right: 0px;
             top: 50%;
+            margin-top: -7px;
         }
         #box1{
             position: relative;
-            transition: top ease-out 0.35s;
+            transition: top ease-out .25s;
         }
         .line-one{
             width: 100%;
             border-bottom: 1px solid white;
-            color: rgba(0,0,0,0.8);
+            color: white;
             line-height: 48px;
             padding-left: 50px;
             font-weight: bold;
             cursor: pointer;
             text-align: left;
-            transition: color ease 0.02s;
+            transition: all ease-in-out .22s 0.25s;
         }
         .line-change{
             color: #7064a9;
+            transform: scale(1.04);
         }
     }
 }

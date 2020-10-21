@@ -53,8 +53,8 @@
         }
         dom.onmouseout = function(e){
             self.setTimeout = setTimeout(function(){
-                box.style.transition = 'top ease-in-out 0.3s';
-                topHeight = -itemHeight * self.value;
+                box.style.transition = 'top linear 0.15s';
+                topHeight = -itemHeight * self.value + (dom.offsetHeight/2) - itemHeight/2;
                 box.style.top = topHeight + 'px';
                 clearTimeout(self.setTimeout);
             }, 200);
@@ -171,10 +171,12 @@
                 var time1 = setTimeout(() => {
                     self.secondList = self.lists[i].childrens;
                     self.secondShow = true;
+                    self.secondListChoose = null;
+                    obj2 = null;
                     clearTimeout(time1);
                 });
                 var time2 = setTimeout(() => {
-                    obj2 = new set(this.$refs.list2, self.secondList, 49, 400);
+                    obj2 = new set(this.$refs.list2, self.secondList, 49, 300);
                     clearTimeout(time2);
                 }, 100);
             },
@@ -251,7 +253,7 @@
             transition: all ease-in-out .21s 0s;
             &:hover{
                 color: rgba(255, 255, 255, 1);
-                transform: scale(1.06) rotateZ(2deg);
+                transform: scale(1.06) rotateZ(3deg);
                 border-bottom: 1px solid rgba(255, 255, 255, 1);
             }
         }
@@ -268,8 +270,8 @@
     .menus-list2{
         left: 25%;
         height: auto;
-        max-height: 400px;
-        margin-top: -100px;
+        max-height: 300px;
+        margin-top: -76px;
         transform: translateY(-50%);
         &::before{
             // margin-top: 0px;
@@ -291,8 +293,14 @@
                 opacity: 1;
                 color: rgba(255, 255, 255, 1);
                
-                transform: scale(1.06) rotateZ(2deg);
+                transform: scale(1.06) rotateZ(3deg);
                 border-bottom: 1px solid rgba(255, 255, 255, 1);
+            }
+        }
+        .line-change{
+            &:hover{
+                color: #7064a9;
+                transform: scale(1.06);
             }
         }
     }

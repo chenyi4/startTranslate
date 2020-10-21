@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="detail-list">ssssssssssssssss测试内容</div>
+        <div class="detail-list"></div>
         <div class="cover-list">
             <div class="menus-list" ref="list">
                 <div id="box1">
@@ -19,37 +19,39 @@
 <script>
     var allNumber = 0;
     function set(dom, lists, func){
-        var start = dom.offsetTop+80;
+       // var start = dom.offsetTop+80;
         var itemHeight = 49;
-        var exchange = 0;
         var length = lists.length;
         var topHeight = 0;
+        var eStoreY = null;
+        var isStart = false;
+        var box = dom.children[0];
         
         var changeDom = dom.children[0];
+        dom.onmousedown = function(e){
+            // console.log("点击组件");
+            isStart = true;
+            eStoreY = e.clientY;
+        }
+        document.onmouseup = function(e){
+            // console.log("鼠标放开");
+            isStart = false;
+        }
+        
         dom.onmousemove = function(e){
-            if(allNumber == 0){
-                exchange = e.clientY - start;
-                if(Math.abs(exchange)  < 22){
-                    changeDom.style.top = topHeight + exchange*4 + 'px';
+            if(isStart){
+                topHeight = topHeight + (e.clientY - eStoreY)*4;
+                if(topHeight > 49){
+                    topHeight = 49;
                 }
-
-                // exchange = e.clientY - start;
-                // if(Math.abs(exchange) > 2){
-                //     allNumber = allNumber+((exchange>0)?1:-1);
-                // }
-                
-                // topHeight = (49*allNumber);
-                // changeDom.style.top = (topHeight + 'px');
-                // func(-allNumber);
-            }else{
-               
-                // }else{
-                //      allNumber = allNumber+((exchange>0)?1:-1);
-                // }
+                box.style.top = topHeight + 'px';
+                console.log(topHeight);
             }
-         dom.onmouseout = function(e){
-             changeDom.style.top = topHeight + allNumber*49 + 'px';
-         }
+        }
+
+        dom.onmouseout = function(e){
+
+        }
             // 
             //     
             //     
@@ -65,9 +67,6 @@
             //     console.log(exchange);
             //     console.log(e.clientY - start);
             // }
-
-
-        }
     }
 
     export default {
@@ -135,13 +134,10 @@
         },
         methods:{
             changeListMenu(i){
-                console.log(i);
-                this.ListChoose = i+1;
+                this.ListChoose = i;
             }
         }
     }
-    
-
 </script>
 <style scoped lang="scss">
 .detail-list{
@@ -157,13 +153,12 @@
 .cover-list{
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.1);
     position: absolute;
     left: 0px;
     top: 0px;
     padding: 5px;
     box-sizing: border-box;
-    
     .menus-list{
         width: 25%;
         max-height: 160px;
@@ -181,11 +176,12 @@
             position: absolute;
             right: 0px;
             top: 50%;
-            margin-top: -7px;
+            margin-top: 0px;
         }
         #box1{
             position: relative;
-            transition: top ease-out .25s;
+            transition: top linear .35s;
+            top: 0px;
         }
         .line-one{
             width: 100%;
@@ -196,7 +192,7 @@
             font-weight: bold;
             cursor: pointer;
             text-align: left;
-            transition: all ease-in-out .22s 0.25s;
+            transition: all ease-in-out .41s 0.2s;
         }
         .line-change{
             color: #7064a9;

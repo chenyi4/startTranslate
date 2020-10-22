@@ -46,28 +46,31 @@
     var obj1, obj2, obj3;
     // 组件框的高度 160  全部的高度 735 
     function set(dom, lists, itemHeight, boxHeight){
-        var start = dom.offsetTop;
+        this.start = dom.offsetTop;
         var itemHeight = itemHeight;
-        var length = lists.length;
-        var topHeight = 0;
+        this.length = lists.length;
+        this.topHeight = 0;
         this.setTimeout = null;
         this.box = dom.children[0];
-        var onceLength = (itemHeight * length - (boxHeight/2))/boxHeight;
+        this.onceLength = (itemHeight * this.length - (boxHeight/2))/boxHeight;
         this.value = 0;
+        console.log(dom);
+        console.log(this.start);
         const self = this;
         
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             self.box.style.transition = 'none';
             clearTimeout(self.setTimeout);
-            topHeight = ((e.clientY - start) * onceLength );
-            self.box.style.top = -topHeight + 'px';
+            self.topHeight = ((e.clientY - self.start) * self.onceLength);
+            // console.log(self.topHeight);
+            self.box.style.top = -self.topHeight + 'px';
         }
         dom.onmouseout = function(e){
             self.setTimeout = setTimeout(function(){
                 self.box.style.transition = 'top linear 0.15s';
-                topHeight = -itemHeight * self.value + (dom.offsetHeight/2) - itemHeight/2;
-                self.box.style.top = topHeight + 'px';
+                self.topHeight = -itemHeight * self.value + (dom.offsetHeight/2) - itemHeight/2;
+                self.box.style.top = self.topHeight + 'px';
                 clearTimeout(self.setTimeout);
             }, 200);
         }
@@ -350,6 +353,9 @@
                     self.secondShow = true;
                     self.secondListChoose = null;
                     obj2 = null;
+                    self.threeList = [];
+                    self.threeListChoose = null;
+                    self.threeShow = false;
                     clearTimeout(time1);
                 });
                 var time2 = setTimeout(() => {
@@ -362,7 +368,6 @@
                 const self = this;
                 self.secondListChoose = i;
                 obj2.value = i;
-
                 this.threeShow = false;
                 var time3 = setTimeout(() => {
                     self.threeList = self.secondList[i].childrens||[];
@@ -510,6 +515,7 @@
         transform: translateY(-50%);
         #box3{
             position: relative;
+            top: 0px;
         }
     }
 }

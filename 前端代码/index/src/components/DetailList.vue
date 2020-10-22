@@ -18,7 +18,9 @@
                     <div :class="{'line-one':true, 'line-change': key == secondListChoose}" 
                     @click="changeSencodMenu(key)"
                     v-for="(item, key) in secondList" 
-                    :key="key">{{item.name}}</div>
+                    :key="key">
+                        {{item.name}}
+                    </div>
                 </div>          
             </div>
             <div class="menus-list3" ref="list3">
@@ -112,6 +114,96 @@
                                    },
                                    {
                                        name: "5678910"
+                                   },
+                                   {
+                                       name: "2020年1月"
+                                   },
+                                   {
+                                       name: "2020年2月"
+                                   },
+                                   {
+                                       name: "9876543"
+                                   },
+                                   {
+                                       name: "45678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "2020年1月"
+                                   },
+                                   {
+                                       name: "2020年2月"
+                                   },
+                                   {
+                                       name: "9876543"
+                                   },
+                                   {
+                                       name: "45678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "2020年1月"
+                                   },
+                                   {
+                                       name: "2020年2月"
+                                   },
+                                   {
+                                       name: "9876543"
+                                   },
+                                   {
+                                       name: "45678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910"
+                                   },
+                                   {
+                                       name: "1234567"
+                                   },
+                                   {
+                                       name: "5678910结束"
                                    }
                                ]
                            },
@@ -212,6 +304,23 @@
                    {
                        name: "4",
                        childrens: []
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4"
+                           }
+                       ]
                    }
                ],
                ListChoose: 0, //第一个choose

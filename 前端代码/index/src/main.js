@@ -5,7 +5,7 @@ import './assets/all.scss';
 
 Vue.use(VueRouter);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 const Foo = {template: `<div class="foo">
                           <div class="test-demo">测试内容</div>
                           foo

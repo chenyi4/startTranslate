@@ -72,7 +72,7 @@
         this.onceLength = (itemHeight * this.length - (boxHeight/2))/boxHeight;
         this.value = 0;
         const self = this;
-        
+
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             self.box.style.transition = 'none';
@@ -458,6 +458,7 @@
                 height: 6px;
                 position: absolute;
                 background: #2b2257;
+                opacity: 0.5;
                 left: 27px;
                 border-radius: 10px;
                 top: 0px;
@@ -470,6 +471,7 @@
                &::before{
                   left: -2px;
                   background: white;
+                  opacity: 1;
                }
             }
             .line{

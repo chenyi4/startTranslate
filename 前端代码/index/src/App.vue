@@ -1,10 +1,13 @@
 <template>
   <div id="app">
+    <!-- 路由视图显示 -->
+    <router-view></router-view> 
+    
     <!--  -->
     <!-- <TableHome></TableHome>
     <MobileHome></MobileHome> -->
     <!-- -->
-    <DetailList></DetailList>
+    <!-- <DetailList></DetailList> -->
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 module.exports = {
+  runtimeCompiler: true, //路由的配置报错
   lintOnSave: false,
   devServer: {
     port: 8080,

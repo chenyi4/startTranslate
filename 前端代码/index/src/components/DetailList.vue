@@ -2,6 +2,22 @@
     <div>
         <div class="detail-list"></div>
         <div class="cover-list">
+            <div class="circle-box" @click="isShowAll = !isShowAll;">
+                <!-- 点击展开,和关闭 -->
+                <div :class="{'show-over':isShowAll}">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+
+                    <div class="circle"></div>
+                </div>
+            </div>
             <div class="menus-list" ref="list">
                 <div id="box1">
                     <div 
@@ -21,7 +37,7 @@
                     :key="key">
                         {{item.name}}
                     </div>
-                </div>          
+                </div>                
             </div>
             <div class="menus-list3" ref="list3">
                 <div id="box3" v-if="threeShow">
@@ -33,20 +49,22 @@
                     </div>
                 </div>
             </div>
+            <input class="search-box" placeholder="搜索详情目录"/>
         </div>
         <div>
             <div class="detail-top"></div>
             <div class="detail-left"></div>
             <div class="detail-bottom"></div>
             <div class="detail-right"></div>
-        </div> 
+        </div>
     </div>
 </template>
 <script>
     var obj1, obj2, obj3;
     // 组件框的高度 160  全部的高度 735 
     function set(dom, lists, itemHeight, boxHeight){
-        this.start = dom.offsetTop;
+        var documentHeight = window.innerHeight;
+        this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
         var itemHeight = itemHeight;
         this.length = lists.length;
         this.topHeight = 0;
@@ -54,17 +72,14 @@
         this.box = dom.children[0];
         this.onceLength = (itemHeight * this.length - (boxHeight/2))/boxHeight;
         this.value = 0;
-        console.log(dom);
-        console.log(this.start);
         const self = this;
-        
+
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             self.box.style.transition = 'none';
-            clearTimeout(self.setTimeout);
             self.topHeight = ((e.clientY - self.start) * self.onceLength);
-            // console.log(self.topHeight);
             self.box.style.top = -self.topHeight + 'px';
+            clearTimeout(self.setTimeout);
         }
         dom.onmouseout = function(e){
             self.setTimeout = setTimeout(function(){
@@ -83,16 +98,18 @@
             return {
                lists: [
                    {
-                       name: "目录1",
+                       name: "1234",
                        childrens: [
                            {
-                               name: "月运",
+                               name: "aa",
                                childrens: [
                                    {
-                                       name: "2020年1月"
+                                       name: "test1",
+                                       chunk: '123' //查询数据的凭证
                                    },
                                    {
-                                       name: "2020年2月"
+                                       name: "test2",
+                                       chunk: '123'
                                    },
                                    {
                                        name: "9876543"
@@ -248,7 +265,7 @@
                                ]
                            },
                            {
-                               name: "ggggg"
+                               name: "ggggg 结束"
                            }
                        ]
                    },
@@ -259,7 +276,7 @@
                                name: "aaaa"
                            },
                            {
-                               name: "bbbb"
+                               name: "bbbb结束"
                            }
                        ]
                    },
@@ -300,7 +317,7 @@
                                name: "aaaa"
                            },
                            {
-                               name: "bbbbend"
+                               name: "bbbb 结束"
                            }
                        ]
                    },
@@ -321,7 +338,7 @@
                                name: "测试3"
                            },
                            {
-                               name: "测试4"
+                               name: "测试4 结束"
                            }
                        ]
                    }
@@ -332,7 +349,8 @@
                secondListChoose: null, //第二个choose
                threeList: [], //第三个列表
                threeShow: false,
-               threeListChoose: null //第三个choose
+               threeListChoose: null, //第三个choose
+               isShowAll: false
             }
         },
         created(){
@@ -395,7 +413,7 @@
 .detail-list{
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100%;     
     background: white;
     padding: 5px;
     // border: 5px solid #2b2257;
@@ -411,6 +429,162 @@
     top: 0px;
     padding: 5px;
     box-sizing: border-box;
+    .circle-box{
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        border-radius: 60px;
+        transition: all linear 0.12s;
+        transform: scale(0.78);
+        cursor: pointer;
+        .circle{
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            left: 0px;
+            top: 25px;
+            transform: rotate(0deg);
+            transition: all ease 1s;
+            &::before{
+                content: '';
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                background: #2b2257;
+                left: 25px;
+                border-radius: 10px;
+                top: 0px;
+                transition: all linear 1s 0.1s, left ease 0.1s 0s;
+            }
+        }
+        &:hover, .show-over{
+            .circle{
+               transform: rotate(360deg);
+               &::before{
+                  left: -2px;
+                  background: white;
+               }
+            }
+            .line{
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3)
+                {
+                    transform: rotate(90deg);
+                    left: 2px;
+                    top: 28px;
+                }
+                &:nth-of-type(1){ //7
+                    //0.75 + 0.125
+                }
+                &:nth-of-type(2){ //3
+                    transform: rotate(90deg);
+                    left: 57px;
+                    top: 28px;
+                }
+                &:nth-of-type(3){ //5
+                    top: auto;
+                    transform: rotate(0deg);
+                    left: 30px;
+                    bottom: 0px;
+                    //0.5 + 0.125
+                }
+                &:nth-of-type(4){
+                    transform: rotate(-45deg);
+                    left: 10px;
+                    top: 8px;
+                    //0.875 + 0.125
+                }
+                &:nth-of-type(5){ //2
+                    transform: rotate(45deg);
+                    left: 48px;
+                    top: 8px;
+                }
+                &:nth-of-type(6){ //6
+                    transform: rotate(45deg);
+                    left: 10px;
+                    top: 47px;
+                    //0.625 + 0.125 
+                }
+                &:nth-of-type(7){ //4
+                    transform: rotate(-45deg);
+                    left: 48px;
+                    top: 47px;
+                }
+                &:nth-of-type(8){
+                    top: 0px;
+                    transform: rotate(0deg);
+                }
+            }
+        }
+        .line{
+            width: 2px;
+            height: 5px;
+            background: white;
+            position: absolute;
+            top: 0px;
+            left: 30px;
+            transition: all ease 0.125s;
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3)
+                {
+                    transform: rotate(90deg) scaleY(1);
+                    left: 2px;
+                    top: 28px;
+                }
+                &:nth-of-type(4){ //0
+                    transform: rotate(45deg) scaleY(1);
+                    left: 15px;
+                    top: 12px;
+                    transition: all ease 0.3s 0s;
+                }
+                &:nth-of-type(8){ //1
+                    transform: rotate(90deg) scaleY(0.8);
+                    top: 7px;
+                    transition: all ease 0.3s 0.125s;
+                }
+                &:nth-of-type(5){ //2
+                    transform: rotate(135deg) scaleY(1);
+                    left: 44px;
+                    top: 13px;
+                    transition: all ease 0.3s 0.25s;
+                }
+                &:nth-of-type(2){ //3
+                    transform: rotate(0deg) scaleY(1);
+                    left: 49px;
+                    transition: all ease 0.3s 0.375s;
+                }
+                &:nth-of-type(7){ //4
+                    transform: rotate(45deg) scaleY(1);
+                    left: 43px;
+                    top: 43px;
+                    transition: all ease 0.3s 0.5s;
+                }
+                &:nth-of-type(3){//5
+                    transform: rotate(90deg) scaleY(1);
+                    top: auto;
+                    bottom: 7px;
+                    left: 30px;
+                    transition: all ease 0.3s 0.625s;
+                }
+                &:nth-of-type(6){ //6
+                    transform: rotate(-45deg) scaleY(1);
+                    left: 15px;
+                    top: 43px;
+                    transition: all ease 0.3s 0.75s;
+                }
+                &:nth-of-type(1){ //7
+                    transform: rotate(0deg) scaleY(1);
+                    left: 8px;
+                    transition: all ease 0.3s 0.875s;
+                }
+            
+        }
+    }
+
     .menus-list, .menus-list2, .menus-list3{
         width: calc(25% - 40px);
         max-height: 160px;
@@ -518,6 +692,22 @@
             top: 0px;
         }
     }
+    .menus-listed{
+        height: 100%;
+        top: 0px;
+        &:nth-of-type(1){
+            height: calc(100% - 100px);
+            top: 80px;
+        }
+    }
+    .search-box{
+        width: calc(100% - 40px);
+        position: absolute;
+        border: 1px dashed white;
+        border-radius: 10px;
+        bottom: 10px;
+        left: 20px;
+    }
 }
 @keyframes line{
     0% {
@@ -531,6 +721,7 @@
       opacity: 1;
   } 
 }
+
 .detail-top,
 .detail-left,
 .detail-bottom,

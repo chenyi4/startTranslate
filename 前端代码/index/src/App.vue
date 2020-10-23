@@ -9,7 +9,7 @@
     
     <!-- <TableHome></TableHome>
     <MobileHome></MobileHome> -->
-    <!-- -->
+    <!-- +++ -->
     <!-- <DetailList></DetailList> -->
   </div>
 </template>

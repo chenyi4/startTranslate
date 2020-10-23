@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="detail-list"></div>
-        <div class="cover-list">
-            <div class="circle-box" @click="isShowAll = !isShowAll;">
+        <div :class="{'cover-list':true,'cover-list-change': isShowAll}">
+            <div class="circle-box" @click="changeShow">
                 <!-- 点击展开,和关闭 -->
                 <div :class="{'show-over':isShowAll}">
                     <div class="line"></div>
@@ -88,7 +88,12 @@
                 clearTimeout(self.setTimeout);
             }, 200);
         }
+        this.updata = function(){
+            console.log("===========");
+        }
     }
+
+
     export default {
         name: 'DetailList',
         props: {
@@ -410,6 +415,9 @@
                 // 查询数据列表
                 // 缺少了抖动的判断
                 console.log(this.searchValue);
+            },
+            changeShow(){
+                this.isShowAll = !this.isShowAll;
             }
         }
     }
@@ -458,7 +466,7 @@
                 height: 6px;
                 position: absolute;
                 background: #2b2257;
-                opacity: 0.5;
+                opacity: 0.4;
                 left: 27px;
                 border-radius: 10px;
                 top: 0px;
@@ -699,14 +707,6 @@
             top: 0px;
         }
     }
-    .menus-listed{
-        height: 100%;
-        top: 0px;
-        &:nth-of-type(1){
-            height: calc(100% - 100px);
-            top: 80px;
-        }
-    }
     .search-box{
         width: calc(100% - 40px);
         position: absolute;
@@ -715,17 +715,31 @@
         bottom: 15px;
         left: 20px;
         background: none;
-        font-size: 20px;
+        font-size: 18px;
         color: white;
         padding: 5px 15px;
         box-sizing: border-box;
+        padding-top: 8px;
         outline: none;
         &::placeholder{
             color: white;
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 }
+
+.cover-list-change{
+    .menus-list, 
+    .menus-list2, 
+    .menus-list3{
+        position: absolute;
+        min-height: calc(100% - 160px);
+        top: 80px;
+        transform: translateY(0px);
+        margin-top: 0px;
+    }
+}
+
 @keyframes line{
     0% {
       transform: rotateZ(4deg);

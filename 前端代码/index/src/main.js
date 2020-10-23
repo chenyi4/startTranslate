@@ -1,20 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import DetailList from './components/DetailList.vue';
 import './assets/all.scss';
 
 Vue.use(VueRouter);
 
 Vue.config.productionTip = false;
-const Foo = {template: `<div class="foo">
-                          <div class="test-demo">测试内容</div>
-                          foo
-                        </div>`};
+// const Foo = {template: DetailList};
 const Bar = { template: '<div>bar</div>' };
 
 const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar }
+  { path: '/foo', component: DetailList },
+  { path: '/bar', component: Bar },
 ];
 
 const router = new VueRouter({

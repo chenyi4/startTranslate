@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <!-- 路由视图显示 -->
-    <router-view></router-view> 
+    <transition :name="transitionName">
+        <router-view></router-view> 
+    </transition>
+     <div @click="changeRouter">测试路由跳转</div>
+    <!-- 测试内容 -->
     
-    <!--  -->
     <!-- <TableHome></TableHome>
     <MobileHome></MobileHome> -->
     <!-- -->
@@ -17,7 +20,7 @@ import MobileHome from './components/MobileHome.vue';
 import TableHome from './components/TableHome.vue';
 
 import DetailList from './components/DetailList.vue';
-import { panel } from '@/api/index'
+import { panel } from '@/api/index';
 
 const back = panel.save({
    type: "all",
@@ -34,10 +37,33 @@ export default {
     MobileHome,
     TableHome,
     DetailList
+  },
+  data(){
+    return {
+      transitionName: 'change-frame',
+      isSet: false
+    }
+  },
+  methods: {
+    changeRouter(){
+      const self = this;
+      this.isSet = !this.isSet;
+      this.$router.push({
+          path: self.isSet?'foo':'/'
+      });
+    }   
+  },
+  beforeRouteUpdate (to, from, next) {
+      this.transitionName = "change-frame";
+      next();
+  },
+  watch: {
+    '$route' (to, from) {
+
+    }
   }
 }
 </script>
-
 <style lang="scss">
 body{
   padding: 0px;
@@ -58,4 +84,6 @@ body{
     background: #624b5d;
   }
 }
+
+
 </style>

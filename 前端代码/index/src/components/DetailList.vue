@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <input class="search-box" placeholder="搜索详情目录"/>
+            <input class="search-box" placeholder="查询/" v-model="searchValue" @input="searchList"/>
         </div>
         <div>
             <div class="detail-top"></div>
@@ -61,7 +61,6 @@
 </template>
 <script>
     var obj1, obj2, obj3;
-    // 组件框的高度 160  全部的高度 735 
     function set(dom, lists, itemHeight, boxHeight){
         var documentHeight = window.innerHeight;
         this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
@@ -73,7 +72,7 @@
         this.onceLength = (itemHeight * this.length - (boxHeight/2))/boxHeight;
         this.value = 0;
         const self = this;
-
+        
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             self.box.style.transition = 'none';
@@ -350,7 +349,8 @@
                threeList: [], //第三个列表
                threeShow: false,
                threeListChoose: null, //第三个choose
-               isShowAll: false
+               isShowAll: false,
+               searchValue: ''
             }
         },
         created(){
@@ -405,6 +405,11 @@
                 const self = this;
                 self.threeListChoose = i;
                 obj3.value = i;
+            },
+            searchList(){
+                // 查询数据列表
+                // 缺少了抖动的判断
+                console.log(this.searchValue);
             }
         }
     }
@@ -444,16 +449,16 @@
             height: 10px;
             position: absolute;
             left: 0px;
-            top: 25px;
+            top: 27px;
             transform: rotate(0deg);
             transition: all ease 1s;
             &::before{
                 content: '';
-                width: 10px;
-                height: 10px;
+                width: 6px;
+                height: 6px;
                 position: absolute;
                 background: #2b2257;
-                left: 25px;
+                left: 27px;
                 border-radius: 10px;
                 top: 0px;
                 transition: all linear 1s 0.1s, left ease 0.1s 0s;
@@ -704,9 +709,19 @@
         width: calc(100% - 40px);
         position: absolute;
         border: 1px dashed white;
-        border-radius: 10px;
-        bottom: 10px;
+        border-radius: 7px;
+        bottom: 15px;
         left: 20px;
+        background: none;
+        font-size: 20px;
+        color: white;
+        padding: 5px 15px;
+        box-sizing: border-box;
+        outline: none;
+        &::placeholder{
+            color: white;
+            font-size: 20px;
+        }
     }
 }
 @keyframes line{

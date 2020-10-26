@@ -2,9 +2,9 @@
     <div>
         <div class="detail-list"></div>
         <div :class="{'cover-list':true,'cover-list-change': isShowAll}">
-            <div class="circle-box" @click="changeShow">
+            <div :class="{'circle-box':true, 'show-over':isShowAll }" @click="changeShow">
                 <!-- 点击展开,和关闭 -->
-                <div :class="{'show-over':isShowAll}">
+                <div>
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
@@ -62,8 +62,10 @@
 <script>
     var obj1, obj2, obj3;
     function set(dom, lists, itemHeight, boxHeight){
-        var documentHeight = window.innerHeight;
-        this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
+
+        this.dom = dom;
+        this.documentHeight = window.innerHeight;
+        this.start = this.documentHeight/2 - this.dom.offsetHeight/2 - 62;
         var itemHeight = itemHeight;
         this.length = lists.length;
         this.topHeight = 0;
@@ -89,7 +91,7 @@
             }, 200);
         }
         this.updata = function(){
-            console.log("===========");
+            this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
         }
     }
 
@@ -429,6 +431,8 @@
     height: 100%;     
     background: white;
     padding: 5px;
+    left: 0px;
+    top: 0px;
     // border: 5px solid #2b2257;
     box-sizing: border-box;
     filter: blur(2px);
@@ -473,67 +477,7 @@
                 transition: all linear 1s 0.1s, left ease 0.1s 0s;
             }
         }
-        &:hover, .show-over{
-            .circle{
-               transform: rotate(360deg);
-               &::before{
-                  left: -2px;
-                  background: white;
-                  opacity: 1;
-               }
-            }
-            .line{
-                &:nth-of-type(1),
-                &:nth-of-type(2),
-                &:nth-of-type(3)
-                {
-                    transform: rotate(90deg);
-                    left: 2px;
-                    top: 28px;
-                }
-                &:nth-of-type(1){ //7
-                    //0.75 + 0.125
-                }
-                &:nth-of-type(2){ //3
-                    transform: rotate(90deg);
-                    left: 57px;
-                    top: 28px;
-                }
-                &:nth-of-type(3){ //5
-                    top: auto;
-                    transform: rotate(0deg);
-                    left: 30px;
-                    bottom: 0px;
-                    //0.5 + 0.125
-                }
-                &:nth-of-type(4){
-                    transform: rotate(-45deg);
-                    left: 10px;
-                    top: 8px;
-                    //0.875 + 0.125
-                }
-                &:nth-of-type(5){ //2
-                    transform: rotate(45deg);
-                    left: 48px;
-                    top: 8px;
-                }
-                &:nth-of-type(6){ //6
-                    transform: rotate(45deg);
-                    left: 10px;
-                    top: 47px;
-                    //0.625 + 0.125 
-                }
-                &:nth-of-type(7){ //4
-                    transform: rotate(-45deg);
-                    left: 48px;
-                    top: 47px;
-                }
-                &:nth-of-type(8){
-                    top: 0px;
-                    transform: rotate(0deg);
-                }
-            }
-        }
+        
         .line{
             width: 2px;
             height: 5px;
@@ -599,8 +543,77 @@
             
         }
     }
-
+    .circle-box:hover, .show-over{
+            .circle{
+               transform: rotate(360deg);
+               &::before{
+                  left: -2px;
+                  background: white;
+                  opacity: 1;
+               }
+            }
+            .line{
+                &:nth-of-type(1),
+                &:nth-of-type(2),
+                &:nth-of-type(3)
+                {
+                    transform: rotate(90deg);
+                    left: 2px;
+                    top: 28px;
+                }
+                &:nth-of-type(1){ //7
+                    //0.75 + 0.125
+                }
+                &:nth-of-type(2){ //3
+                    transform: rotate(90deg);
+                    left: 57px;
+                    top: 28px;
+                }
+                &:nth-of-type(3){ //5
+                    top: auto;
+                    transform: rotate(0deg);
+                    left: 30px;
+                    bottom: 0px;
+                    //0.5 + 0.125
+                }
+                &:nth-of-type(4){
+                    transform: rotate(-45deg);
+                    left: 10px;
+                    top: 8px;
+                    //0.875 + 0.125
+                }
+                &:nth-of-type(5){ //2
+                    transform: rotate(45deg);
+                    left: 48px;
+                    top: 8px;
+                }
+                &:nth-of-type(6){ //6
+                    transform: rotate(45deg);
+                    left: 10px;
+                    top: 47px;
+                    //0.625 + 0.125 
+                }
+                &:nth-of-type(7){ //4
+                    transform: rotate(-45deg);
+                    left: 48px;
+                    top: 47px;
+                }
+                &:nth-of-type(8){
+                    top: 0px;
+                    transform: rotate(0deg);
+                }
+            }
+            &:hover{
+                
+            }
+     }
+    .show-over:hover{
+        .circle{
+            transform: rotate(0deg);
+        }
+    }
     .menus-list, .menus-list2, .menus-list3{
+        opacity: 0;
         width: calc(25% - 40px);
         max-height: 160px;
         overflow: hidden;

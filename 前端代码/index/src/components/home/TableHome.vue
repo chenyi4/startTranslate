@@ -3,7 +3,7 @@
        <!-- <img  src="./../assets/table.jpg"> -->
        <div :class="{'center':true, 'center-change':isShow}">
            <div class="center-box">
-               <div class="line line-1">
+               <div class="line line-1" @click="changePath">
                    <div class="pic"></div>
                    <div>
                        <div class="title">All About Eclipses for Coping with Them</div>
@@ -11,7 +11,7 @@
                        <div class="content">All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them</div>
                    </div>
                </div>
-               <div class="line line-2">
+               <div class="line line-2" @click="changePath">
                    <div class="content">
                        All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
                        All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
@@ -24,7 +24,7 @@
                        </div>
                    </div>
                </div>
-               <div class="line line-3">
+               <div class="line line-3" @click="changePath">
                    <div class="pic"></div>
                    <div class="title"> All About Eclipses for Coping with ThemAll About Eclipses for Coping</div>
                     <div class="arrow"></div>
@@ -71,6 +71,13 @@ export default {
       setTimeout(()=>{
           self.isShow = false;
       }, 400);
+  },
+  methods: {
+      changePath(){
+          this.$router.push({
+            path: 'article'
+        });
+      }
   }
 }
 </script>

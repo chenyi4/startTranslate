@@ -1,15 +1,10 @@
 // 路由的动画跳整
 .change-frame-enter-active, .change-frame-leave-active{
-    transition: opacity linear 1.2s;
-    position: relative;
-    left: 0%;
-    top: 0%;
-    transform: rotateX(0deg) rotateZ(0deg);
+    transition: all linear .55s;
     opacity: 1;
-    
   }
-  .change-frame-enter, .change-frame-leave-to{
-     opacity: 0;
-  }
+ .change-frame-enter, .change-frame-leave-to{
+    opacity: 0;
+ }
   
   

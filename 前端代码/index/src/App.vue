@@ -4,7 +4,7 @@
     <transition :name="transitionName">
         <router-view></router-view> 
     </transition>
-     <div @click="changeRouter">测试路由跳转</div>
+     <!-- <div @click="changeRouter">测试路由跳转</div> -->
     <!-- 测试内容 -->
     
     <!-- <TableHome></TableHome>
@@ -16,10 +16,6 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import MobileHome from './components/MobileHome.vue';
-import TableHome from './components/TableHome.vue';
-
-import DetailList from './components/DetailList.vue';
 import { panel } from '@/api/index';
 
 const back = panel.save({
@@ -33,10 +29,7 @@ back.then((value) => {
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    MobileHome,
-    TableHome,
-    DetailList
+   
   },
   data(){
     return {
@@ -48,9 +41,7 @@ export default {
     changeRouter(){
       const self = this;
       this.isSet = !this.isSet;
-      this.$router.push({
-          path: self.isSet?'foo':'/'
-      });
+      
     }   
   },
   beforeRouteUpdate (to, from, next) {
@@ -61,6 +52,9 @@ export default {
     '$route' (to, from) {
 
     }
+  },
+  destroyed(){
+    alert("11111111");
   }
 }
 </script>

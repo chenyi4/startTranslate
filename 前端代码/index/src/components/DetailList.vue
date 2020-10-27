@@ -33,7 +33,7 @@
                 <div id="box2" v-if="secondShow">
                     <div :class="{'line-one':true, 'line-change': key == secondListChoose}" 
                     @click="changeSencodMenu(key)"
-                    v-for="(item, key) in secondList" 
+                    v-for="(item, key) in lists[ListChoose].childrens" 
                     :key="key">
                         {{item.name}}
                     </div>
@@ -42,7 +42,7 @@
             <div class="menus-list3" ref="list3">
                 <div id="box3" v-if="threeShow">
                     <div :class="{'line-one':true, 'line-change': key == threeListChoose}" 
-                    v-for="(item, key) in threeList" 
+                    v-for="(item, key) in lists[ListChoose].childrens[secondListChoose].childrens" 
                     @click="selectThreeMenu(key)"
                     :key="key">
                         {{item.name}}
@@ -51,11 +51,11 @@
             </div>
             <div class="mobile-list">
                 <div class="mobile-list-box">
-                    <div class="file-item" v-for="(item, keys) in 12" :key="keys">
-                        <div class="title">目录1</div>
-                        <div class="list-all">
-                            <div class="title">susan miller</div>
-                            <div class="item" v-for="(item, key) in 12" :key="key">测试{{item}}</div>
+                    <div class="file-item" v-for="(item, keys) in lists" :key="keys">
+                        <div class="title">{{item.name}}</div>
+                        <div class="list-all" v-for="(file, oneKey) in item.childrens" :key="oneKey">
+                            <div class="title">{{file.name}}</div>
+                            <div class="item" v-for="(items, key) in file.childrens" :key="key">{{items.name}}</div>
                         </div>
                     </div>
                 </div>
@@ -124,6 +124,7 @@
         },
         data() {
             return {
+               orgList: null,
                lists: [
                    {
                        name: "1234",
@@ -372,16 +373,14 @@
                    }
                ],
                ListChoose: 0, //第一个choose
-               secondList: [], //
                secondShow: false,
                secondListChoose: null, //第二个choose
-               threeList: [], //第三个列表
                threeShow: false,
                threeListChoose: null, //第三个choose
                isShowAll: false,
                searchValue: '',
                isOverAll: false,
-               isShowOverBlock: false,
+               isShowOverBlock: true,
                text:　{
                     title: `Everything you need know about`,
                     data: '2020/10/26',
@@ -526,13 +525,15 @@
                         You may spend more time with your mother or father or help them with small things that need to be done around their house, or you may help by finding the right specialist to address your mother’s or father’s health concern. While you are together, you can ask all the questions about their childhood and other details about your family tree that you’ve always wanted to know. It can be a lovely time to grow closer.
 
                     `
-                }
+                },
+                searchClear: null
             }
         },
         created(){
             const self = this;
             this.$nextTick(() => {
                 obj1 = new set(this.$refs.list, self.lists,49, 160);
+                self.orgList = JSON.parse(JSON.stringify(self.lists));
             });
         },
         methods:{
@@ -540,20 +541,20 @@
                 const self = this;
                 this.ListChoose = i;
                 obj1.value = i;
+                var secondList;
 
                 this.secondShow = false;
                 var time1 = setTimeout(() => {
-                    self.secondList = self.lists[i].childrens||[];
+                    secondList = self.lists[i].childrens||[];
                     self.secondShow = true;
                     self.secondListChoose = null;
                     obj2 = null;
-                    self.threeList = [];
                     self.threeListChoose = null;
                     self.threeShow = false;
                     clearTimeout(time1);
                 });
                 var time2 = setTimeout(() => {
-                    obj2 = new set(this.$refs.list2, self.secondList, 49, 300);
+                    obj2 = new set(this.$refs.list2, secondList, 49, 300);
                     obj2.value = null;
                     clearTimeout(time2);
                 }, 100);
@@ -563,8 +564,9 @@
                 self.secondListChoose = i;
                 obj2.value = i;
                 this.threeShow = false;
+                var threeList;
                 var time3 = setTimeout(() => {
-                    self.threeList = self.secondList[i].childrens||[];
+                    threeList = self.lists[self.ListChoose].childrens[self.secondListChoose].childrens||[];
                     self.threeShow = true;
                     self.threeListChoose = null;
                     obj3 = null;
@@ -572,7 +574,7 @@
                 });
 
                 var time4 = setTimeout(() => {
-                    obj3 = new set(this.$refs.list3, self.threeList, 49, 300);
+                    obj3 = new set(this.$refs.list3, threeList, 49, 300);
                     obj3.value = null;
                     clearTimeout(time4);
                 }, 100);
@@ -586,9 +588,39 @@
                 },100);
             },
             searchList(){
+                const self = this;
+                clearTimeout(self.searchClear);
+                let newList = [{
+                    name: "查询结果",
+                    childrens: [
+                        {
+                          name: "查询结果",
+                          childrens: [{
+                              name: "测试1"
+                          },{
+                              name: "测试2"
+                          },{
+                              name: "测试3"
+                          }]
+                        }
+                    ]
+                }];
+                var lists = JSON.parse(JSON.stringify(self.lists));
+                self.searchClear = setTimeout(function(){
+                    lists.forEach((item) => {
+                        console.log(item);
+                    });
+                    
+                    if(self.searchValue){
+                        self.lists = newList;
+                    }else{
+                        self.lists = self.orgList;
+                    }
+                    clearTimeout(self.searchClear);
+                }, 600);
                 // 查询数据列表
                 // 缺少了抖动的判断
-                console.log(this.searchValue);
+               
             },
             changeShow(){
                 this.isShowAll = !this.isShowAll;
@@ -1208,6 +1240,8 @@
         .search-box{
             border-color: #8f8bd5;
             color: #8f8bd5;
+            font-size: 16px;
+            padding-top: 6px;
         }
         .mobile-list{
             width: calc(100%);

@@ -71,7 +71,7 @@
                     <div class="detail-text">{{text.content}}</div>
                 </div>
             </div>
-            <div class="call-back"></div>
+            <div class="call-back" @click="changePath"></div>
             <div class="translate">译</div>
             <div class="text-place" @click="showBlock">位置 》 位置2 》 具体位置</div>
         </div>
@@ -595,6 +595,11 @@
             },
             showBlock(){
                 this.isShowOverBlock = true;
+            },
+            changePath(){
+                 this.$router.push({
+                    path: '/'
+                });
             }
         }
     }
@@ -916,6 +921,9 @@
             font-size: 18px;
         }
     }
+    .mobile-list{
+        display: none;
+    }
     .back-detail{
         position: absolute;
         right: 18px;
@@ -1046,9 +1054,10 @@
     }
     .call-back{
         position: absolute;
-        right: 55px;
+        right: 45px;
         top: 28px;
         display: none;
+        transform: scale(0.8);
         &::before{
             content: '';
             width: 35px;
@@ -1202,6 +1211,7 @@
         }
         .mobile-list{
             width: calc(100%);
+            display: block;
             height: calc(100% - 80px);
             position: relative;
             text-align: left;

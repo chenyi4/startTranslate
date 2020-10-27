@@ -221,6 +221,7 @@ var all = [
     ["trace", "追溯/追踪"],
     ["outside", "外部"],
     ["directly", "直接地"],
+    ["in this direction", "朝这个方向"],
     ["direct", "直接的"],
     ["effect", "影响"],
     ["consciously", "有意识地"],

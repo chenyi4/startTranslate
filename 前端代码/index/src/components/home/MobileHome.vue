@@ -3,7 +3,7 @@
       <!-- <img  src="./../assets/mobile.jpg"> -->
       <div :class="{'box':true, 'box-show': isShow}">
           <div class="more">more</div>
-          <div class="box-size">
+          <div class="box-size" @click="changePath">
             <div class="line">202007</div>
             <div class="line">202007</div>
             <div class="line">202007</div>
@@ -38,6 +38,13 @@ export default {
       setTimeout(()=>{
           self.isShow = false;
       }, 400);
+  },
+  methods: {
+      changePath(){
+          this.$router.push({
+                path: 'article'
+          });
+      }
   }
 }
 </script>

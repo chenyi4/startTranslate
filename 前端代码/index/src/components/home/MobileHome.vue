@@ -2,8 +2,8 @@
   <div class="home">
       <!-- <img  src="./../assets/mobile.jpg"> -->
       <div :class="{'box':true, 'box-show': isShow}">
-          <div class="more">more</div>
-          <div class="box-size" @click="changePath">
+          <div class="more" @click="changePath">more</div>
+          <div class="box-size" @click="changePath(20203920)">
             <div class="line">202007</div>
             <div class="line">202007</div>
             <div class="line">202007</div>
@@ -40,10 +40,19 @@ export default {
       }, 400);
   },
   methods: {
-      changePath(){
-          this.$router.push({
-                path: 'article'
-          });
+      changePath(value){
+          if(value){
+              this.$router.push({
+                    path: 'article',
+                    query: {
+                        chunk: value
+                    }
+              });
+          }else{
+              this.$router.push({
+                    path: 'article',
+              });
+          }
       }
   }
 }

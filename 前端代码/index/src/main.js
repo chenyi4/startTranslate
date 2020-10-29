@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import DetailList from './components/DetailList.vue';
 import Home from './components/home/Home.vue';
+import store from './store'
 import './assets/all.scss';
 
 Vue.use(VueRouter);
@@ -22,6 +23,7 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store: store,
   render: h => h(App),
 }).$mount('#app')
 

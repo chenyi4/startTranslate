@@ -90,7 +90,7 @@
         this.dom = dom;
         this.documentHeight = window.innerHeight;
         this.start = this.documentHeight/2 - this.dom.offsetHeight/2 - 62;
-        var itemHeight = itemHeight;
+        this.itemHeight = itemHeight;
         this.length = lists.length;
         this.topHeight = 0;
         this.setTimeout = null;
@@ -106,16 +106,20 @@
             self.box.style.top = -self.topHeight + 'px';
             clearTimeout(self.setTimeout);
         }
-        dom.onmouseout = function(e){
+        dom.onmouseout = function(){
             self.setTimeout = setTimeout(function(){
-                self.box.style.transition = 'top linear 0.15s';
-                self.topHeight = -itemHeight * self.value + (dom.offsetHeight/2) - itemHeight/2;
-                self.box.style.top = self.topHeight + 'px';
-                clearTimeout(self.setTimeout);
+                self.setHeightTop();
             }, 200);
         }
         this.updata = function(){
             this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
+        }
+
+        this.setHeightTop = function(){
+            this.box.style.transition = 'top linear 0.15s';
+            this.topHeight = -this.itemHeight * this.value + (this.dom.offsetHeight/2) - this.itemHeight/2;
+            this.box.style.top = this.topHeight + 'px';
+            clearTimeout(self.setTimeout);
         }
     }
     export default {
@@ -367,7 +371,12 @@
                                name: "测试3"
                            },
                            {
-                               name: "测试4 结束"
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
                            }
                        ]
                    }
@@ -535,6 +544,7 @@
                 obj1 = new set(this.$refs.list, self.lists,49, 160);
                 self.orgList = JSON.parse(JSON.stringify(self.lists));
             });
+            console.log(this.$store.state.count);
         },
         methods:{
             changeListMenu(i){
@@ -548,7 +558,6 @@
                     secondList = self.lists[i].childrens||[];
                     self.secondShow = true;
                     self.secondListChoose = null;
-                    obj2 = null;
                     self.threeListChoose = null;
                     self.threeShow = false;
                     clearTimeout(time1);
@@ -569,7 +578,6 @@
                     threeList = self.lists[self.ListChoose].childrens[self.secondListChoose].childrens||[];
                     self.threeShow = true;
                     self.threeListChoose = null;
-                    obj3 = null;
                     clearTimeout(time3);
                 });
 
@@ -583,36 +591,95 @@
                 const self = this;
                 self.threeListChoose = i;
                 obj3.value = i;
+                obj3.setHeightTop();
                 var time3 = setTimeout(function(){
                     self.isShowOverBlock = false;
-                },100);
+                },1000);
             },
             searchList(){
                 const self = this;
                 clearTimeout(self.searchClear);
-                let newList = [{
-                    name: "查询结果",
-                    childrens: [
-                        {
-                          name: "查询结果",
-                          childrens: [{
-                              name: "测试1"
-                          },{
-                              name: "测试2"
-                          },{
-                              name: "测试3"
-                          }]
-                        }
-                    ]
-                }];
-                var lists = JSON.parse(JSON.stringify(self.lists));
+                let newList = [
+                    // {
+                    // name: "查询结果",
+                    // childrens: [
+                        // {
+                        //   name: "查询结果",
+                        //   childrens: [{
+                        //       name: "测试1",
+                        //       childrens: [
+                        //           {
+                        //               name: "名称1"
+                        //           }
+                        //       ]
+                        //   },{
+                        //       name: "测试2"
+                        //   },{
+                        //       name: "测试3"
+                        //   }]
+                        // }
+                    // ]
+                // }
+                ];
+                var lists = JSON.parse(JSON.stringify(self.orgList));
                 self.searchClear = setTimeout(function(){
                     lists.forEach((item) => {
-                        console.log(item);
+                        if(item.name.indexOf(self.searchValue) >= 0){
+                            newList.push(item);
+                        }else{
+                            var obj = { childrens: [], name: item.name};
+                            item.childrens.forEach((children) => {
+                                if(children.name.indexOf(self.searchValue) >= 0){
+                                    obj.childrens.push(children);
+                                }
+                                // console.log(children);
+                            });
+                            if(obj.childrens.length > 0){
+                                newList.push(obj);
+                            }else{
+                               var obj = {
+                                    name: item.name,
+                                    childrens: []
+                               };
+                               item.childrens.forEach((one) => {
+                                   var child = {
+                                       name: one.name,
+                                       childrens: []
+                                   }
+                                   if(one.childrens){
+                                        one.childrens.forEach((itemOne) => {
+                                            if(itemOne.name.indexOf(self.searchValue) >= 0){
+                                                child.childrens.push(itemOne);
+                                            }
+                                        });
+                                        if(child.childrens.length > 0){
+                                            obj.childrens.push(child);
+                                        }
+                                   }
+                               });
+                               if(obj.childrens.length > 0){
+                                    newList.push(obj);
+                                }
+                            }
+                        }
                     });
                     
                     if(self.searchValue){
                         self.lists = newList;
+                        console.log(self.lists);
+                        self.ListChoose = 0;
+                        self.secondListChoose = 0;
+                        self.threeListChoose = 0;
+                        self.secondShow = true;
+                        self.threeShow = true;
+                        obj1.value = 0;
+                        obj1.setHeightTop();
+                        obj2.value = 0;
+                        obj2.setHeightTop();
+                        obj3.value = 0;
+                        obj3.setHeightTop();
+                        //模块上下的切换高度，不能设置到顶部
+
                     }else{
                         self.lists = self.orgList;
                     }

@@ -3,7 +3,7 @@
        <!-- <img  src="./../assets/table.jpg"> -->
        <div :class="{'center':true, 'center-change':isShow}">
            <div class="center-box">
-               <div class="line line-1" @click="changePath">
+               <div class="line line-1" @click="changePath(20203920)">
                    <div class="pic"></div>
                    <div>
                        <div class="title">All About Eclipses for Coping with Them</div>
@@ -11,7 +11,7 @@
                        <div class="content">All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them</div>
                    </div>
                </div>
-               <div class="line line-2" @click="changePath">
+               <div class="line line-2" @click="changePath(20203922)">
                    <div class="content">
                        All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
                        All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
@@ -24,7 +24,7 @@
                        </div>
                    </div>
                </div>
-               <div class="line line-3" @click="changePath">
+               <div class="line line-3" @click="changePath(20203923)">
                    <div class="pic"></div>
                    <div class="title"> All About Eclipses for Coping with ThemAll About Eclipses for Coping</div>
                     <div class="arrow"></div>
@@ -73,9 +73,12 @@ export default {
       }, 400);
   },
   methods: {
-      changePath(){
+      changePath(value){
           this.$router.push({
-            path: 'article'
+            path: 'article',
+            query: {
+                chunk: value
+            }
         });
       }
   }

@@ -6,7 +6,7 @@ const store = new Vuex.Store({
     state: {
       articleLists: [
           {
-            chunk: '20203920',
+            chunk: 20203920,
             title: `Everything you need know about`,
             data: '2020/10/26',
             content: `
@@ -152,17 +152,17 @@ const store = new Vuex.Store({
             `
           },
           {
-            chunk: '20203922',
+            chunk: 20203922,
             title: `testAnother`,
             data: '2020/10/26',
             content: `
                 Dear Reader:
-                
+
                 I finally can reveal the secret I have been harboring for months!
             `
           },
           {
-            chunk: '20203923',
+            chunk: 20203923,
             title: `Any thing else test`,
             data: '2020/10/26',
             content: `
@@ -170,7 +170,7 @@ const store = new Vuex.Store({
 
                 still with the same trademarked name, 
             `
-          },
+          }
       ]
     },
     mutations: {

@@ -543,7 +543,8 @@
                 obj1 = new set(this.$refs.list, self.lists,49, 160);
                 self.orgList = JSON.parse(JSON.stringify(self.lists));
             });
-            console.log(this.$store.state.count);
+            // console.log(this.$store.state.count);
+            console.log(this.$router);
         },
         methods:{
             changeListMenu(i){

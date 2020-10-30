@@ -2,14 +2,14 @@
   <div class="home">
       <!-- <img  src="./../assets/mobile.jpg"> -->
       <div :class="{'box':true, 'box-show': isShow}">
-          <div class="more" @click="changePath">more</div>
+          <div class="more" @click="changePath()">more</div>
           <div class="box-size" @click="changePath(20203920)">
-            <div class="line">202007</div>
-            <div class="line">202007</div>
-            <div class="line">202007</div>
-            <div class="line">202007</div>
-            <div class="line">202007</div>
-            <div class="line">202007</div>
+                <div class="line">202007</div>
+                <div class="line">202007</div>
+                <div class="line">202007</div>
+                <div class="line">202007</div>
+                <div class="line">202007</div>
+                <div class="line">202007</div>
           </div>
           <div class="square">
           </div>  
@@ -49,6 +49,7 @@ export default {
                     }
               });
           }else{
+            //   console.log("执行的是这一行");
               this.$router.push({
                     path: 'article',
               });

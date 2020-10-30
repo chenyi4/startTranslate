@@ -86,7 +86,6 @@
 <script>
     var obj1, obj2, obj3;
     function set(dom, lists, itemHeight, boxHeight){
-
         this.dom = dom;
         this.documentHeight = window.innerHeight;
         this.start = this.documentHeight/2 - this.dom.offsetHeight/2 - 62;

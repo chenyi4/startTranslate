@@ -9,7 +9,6 @@
 import MobileHome from './MobileHome.vue';
 import TableHome from './TableHome.vue';
 
-
 export default {
   name: 'Home',
   props: {

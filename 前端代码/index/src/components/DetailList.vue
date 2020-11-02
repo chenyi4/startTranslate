@@ -60,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            <div class="none-message" v-if="lists.length == 0">暂无数据</div>
             <div class="back-detail" @click="isShowOverBlock = false;"></div>
             <input class="search-box" placeholder="查询 /" v-model="searchValue" @input="searchList"/>
         </div>
@@ -543,8 +544,6 @@
                 obj1 = new set(this.$refs.list, self.lists,49, 160);
                 self.orgList = JSON.parse(JSON.stringify(self.lists));
             });
-            // console.log(this.$store.state.count);
-            // console.log(this.$router);
         },
         methods:{
             changeListMenu(i){
@@ -633,7 +632,6 @@
                                 if(children.name.indexOf(self.searchValue) >= 0){
                                     obj.childrens.push(children);
                                 }
-                                // console.log(children);
                             });
                             if(obj.childrens.length > 0){
                                 newList.push(obj);
@@ -667,7 +665,6 @@
                     
                     if(self.searchValue){
                         self.lists = newList;
-                        // console.log(self.lists);
                         self.ListChoose = 0;
                         self.secondListChoose = 0;
                         self.threeListChoose = 0;
@@ -680,7 +677,6 @@
                             self.threeShow = true;
 
                             var secondList = self.lists[0].childrens||[];
-                            console.log(self.lists[0].childrens);
                            //如果存在obj2
                             obj2 = new set(self.$refs.list2, secondList, 49, 300);
                             obj2.value = 0;
@@ -696,11 +692,6 @@
                             self.secondShow = false;
                             self.threeShow = false;
                         }
-                        
-                        // obj2.value = 0;
-                        // obj2.setHeightTop();
-                        // obj3.value = 0;
-                        // obj3.setHeightTop();
                         //模块上下的切换高度，不能设置到顶部
 
                     }else{
@@ -1068,6 +1059,13 @@
             border-right: none;
             transform: rotate(-45deg);
         }
+    }
+    .none-message{
+        color: white;
+        text-align: center;
+        position: relative;
+        top: calc(50% - 50px);
+        letter-spacing: 10px;
     }
 }
 .cover-list-show{

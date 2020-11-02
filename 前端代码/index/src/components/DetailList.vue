@@ -106,19 +106,18 @@
             clearTimeout(self.setTimeout);
         }
         dom.onmouseout = function(){
-            self.setTimeout = setTimeout(function(){
                 self.setHeightTop();
-            }, 200);
-        }
-        this.updata = function(){
-            this.start = documentHeight/2 - dom.offsetHeight/2 - 62;
         }
 
         this.setHeightTop = function(){
-            this.box.style.transition = 'top linear 0.15s';
-            this.topHeight = -this.itemHeight * this.value + (this.dom.offsetHeight/2) - this.itemHeight/2;
-            this.box.style.top = this.topHeight + 'px';
-            clearTimeout(self.setTimeout);
+            const self = this;
+            self.setTimeout = setTimeout(function(){
+                self.box = self.dom.children[0];
+                self.box.style.transition = 'top linear 0.15s';
+                self.topHeight = -self.itemHeight * self.value + (self.dom.offsetHeight/2) - self.itemHeight/2;
+                self.box.style.top = self.topHeight + 'px';
+                clearTimeout(self.setTimeout);
+            }, 300);
         }
     }
     export default {
@@ -544,7 +543,7 @@
                 self.orgList = JSON.parse(JSON.stringify(self.lists));
             });
             // console.log(this.$store.state.count);
-            console.log(this.$router);
+            // console.log(this.$router);
         },
         methods:{
             changeListMenu(i){
@@ -666,18 +665,40 @@
                     
                     if(self.searchValue){
                         self.lists = newList;
-                        console.log(self.lists);
+                        // console.log(self.lists);
                         self.ListChoose = 0;
                         self.secondListChoose = 0;
                         self.threeListChoose = 0;
-                        self.secondShow = true;
-                        self.threeShow = true;
-                        obj1.value = 0;
-                        obj1.setHeightTop();
-                        obj2.value = 0;
-                        obj2.setHeightTop();
-                        obj3.value = 0;
-                        obj3.setHeightTop();
+                        
+                        //如果不存在obj2，就创建一个新的obj2
+                        if(self.lists.length > 0){
+                            obj1.value = 0;
+                            obj1.setHeightTop();
+                            self.secondShow = true;
+                            self.threeShow = true;
+
+                            var secondList = self.lists[0].childrens||[];
+                            console.log(self.lists[0].childrens);
+                           //如果存在obj2
+                            obj2 = new set(self.$refs.list2, secondList, 49, 300);
+                            obj2.value = 0;
+                            obj2.setHeightTop();
+                            
+                            //如果不存在obj3，就创建一个obj3
+                            var threeList = self.lists[0].childrens[0].childrens||[];
+                            obj3 = new set(self.$refs.list3, threeList, 49, 300);
+                            obj3.value = 0;
+                            obj3.setHeightTop();
+
+                        }else{
+                            self.secondShow = false;
+                            self.threeShow = false;
+                        }
+                        
+                        // obj2.value = 0;
+                        // obj2.setHeightTop();
+                        // obj3.value = 0;
+                        // obj3.setHeightTop();
                         //模块上下的切换高度，不能设置到顶部
 
                     }else{

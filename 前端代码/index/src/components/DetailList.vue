@@ -115,9 +115,11 @@
             const self = this;
             self.setTimeout = setTimeout(function(){
                 self.box = self.dom.children[0];
-                self.box.style.transition = 'top linear 0.15s';
                 self.topHeight = -self.itemHeight * self.value + (self.dom.offsetHeight/2) - self.itemHeight/2;
-                self.box.style.top = self.topHeight + 'px';
+                if(self.box){
+                    self.box.style.transition = 'top linear 0.15s';
+                    self.box.style.top = self.topHeight + 'px';
+                }
                 clearTimeout(self.setTimeout);
             }, 300);
         }
@@ -696,6 +698,12 @@
 
                     }else{
                         self.lists = self.orgList;
+
+                        obj3.value = 0;
+                        obj3.setHeightTop();
+
+                        obj2.value = 0;
+                        obj2.setHeightTop();
                     }
                     clearTimeout(self.searchClear);
                 }, 600);

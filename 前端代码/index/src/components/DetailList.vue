@@ -95,6 +95,7 @@
         this.setTimeout = null;
         this.box = dom.children[0];
         this.onceLength = (itemHeight * this.length - (boxHeight/2))/boxHeight;
+        this.onceLength = this.onceLength > 0?this.onceLength:0.2;
         this.value = 0;
         const self = this;
 
@@ -561,6 +562,7 @@
                     self.threeShow = false;
                     clearTimeout(time1);
                 });
+
                 var time2 = setTimeout(() => {
                     obj2 = new set(this.$refs.list2, secondList, 49, 300);
                     obj2.value = null;

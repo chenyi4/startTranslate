@@ -381,6 +381,334 @@
                                ]
                            }
                        ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   }, {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   }, 
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   }, 
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   }, {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   }, 
+                   {
+                       name: "5",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       name: "结束",
+                       childrens: [
+                           {
+                               name: "测试1"
+                           },
+                           {
+                               name: "测试2"
+                           },
+                           {
+                               name: "测试3"
+                           },
+                           {
+                               name: "测试4 结束",
+                               childrens: [
+                                   {
+                                       name: "88899"
+                                   }
+                               ]
+                           }
+                       ]
                    }
                ],
                ListChoose: 0, //第一个choose
@@ -391,6 +719,7 @@
                isShowAll: false,
                searchValue: '',
                isOverAll: false,
+               chunk: null,
                isShowOverBlock: true,
                text:　{
                     title: `Everything you need know about`,
@@ -534,7 +863,6 @@
                         The period from mid-November through the first week of January will be your most productive for home and family matters. If you are not focused on your residence or other property you may own or rent (or hope to sell or buy soon), then you may be thinking intensely on how to best help one of your parents.
 
                         You may spend more time with your mother or father or help them with small things that need to be done around their house, or you may help by finding the right specialist to address your mother’s or father’s health concern. While you are together, you can ask all the questions about their childhood and other details about your family tree that you’ve always wanted to know. It can be a lovely time to grow closer.
-
                     `
                 },
                 searchClear: null
@@ -545,6 +873,16 @@
             this.$nextTick(() => {
                 obj1 = new set(this.$refs.list, self.lists,49, 160);
                 self.orgList = JSON.parse(JSON.stringify(self.lists));
+            });
+        },
+        beforeRouteEnter (to, from, next) {
+            var chunk = to.query.chunk;
+            next(vm => {
+                if(chunk){
+                    vm.isShowOverBlock = false;
+                }else{
+                    vm.isShowOverBlock = true;
+                }
             });
         },
         methods:{
@@ -709,7 +1047,6 @@
                 }, 600);
                 // 查询数据列表
                 // 缺少了抖动的判断
-               
             },
             changeShow(){
                 this.isShowAll = !this.isShowAll;

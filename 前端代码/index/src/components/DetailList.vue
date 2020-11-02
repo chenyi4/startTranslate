@@ -99,7 +99,7 @@
         this.onceLength = this.onceLength > 0?this.onceLength:0.2;
         this.value = 0;
         const self = this;
-
+        
         var changeDom = dom.children[0];
         dom.onmousemove = function(e){
             self.box.style.transition = 'none';
@@ -108,7 +108,7 @@
             clearTimeout(self.setTimeout);
         }
         dom.onmouseout = function(){
-                self.setHeightTop();
+               self.setHeightTop();
         }
 
         this.setHeightTop = function(){
@@ -840,7 +840,6 @@
                         Every part of you is longing to go on a trip to get a change of scene. Life has required a lot of self-discipline lately, but as a Capricorn, self-discipline is never a problem—you have that in abundance. Everyone needs change, though, and you are feeling the need especially strongly now. Yet we are in the middle of a pandemic, and even if your region or city is doing well, other parts of the world may be having a hard time coping with the virus and are still in lockdown. Check with authorities before you plan any trip.
 
 
-
                         Read more: https://www.astrologyzone.com/forecasts/capricorn-horoscope-september-2020/7/#ixzz6YwRK8fpj
 
                         YOUR HOROSCOPE BY SUSAN MILLER
@@ -851,7 +850,6 @@
                         Good news about money is likely to come to you at the start of the month—it would involve a one-time sum of money, which might represent a bonus, commission, royalty, insurance payout, or other payment. That is sure to make you happy.
 
                         You may be asked to sign a contract or other important papers. Set the signing for September 2 or, if that is too early to be ready, sign on your runner-up day, September 4, your two best days to sign on the dotted line. Avoid launching anything new while Mars is retrograde, September 9 to November 13.
-
 
 
                         Read more: https://www.astrologyzone.com/forecasts/capricorn-horoscope-september-2020/8/#ixzz6YwRNJ4WX

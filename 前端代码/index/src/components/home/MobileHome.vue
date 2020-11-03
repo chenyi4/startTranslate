@@ -20,7 +20,6 @@
       </div>
   </div>
 </template>
-
 <script>
 //移动端取5条数据
 export default {
@@ -49,7 +48,6 @@ export default {
                     }
               });
           }else{
-            //   console.log("执行的是这一行");
               this.$router.push({
                     path: 'article',
               });

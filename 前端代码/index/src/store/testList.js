@@ -857,6 +857,14 @@ var moduleTest = {
                         ——————————————
                         SUMMARY
                     `
+            },
+            {
+                chunk: '20203923',
+                title: `Everything you need know about`,
+                data: '2020/10/26',
+                content: `
+                        YOUR HOROSCOPE BY SUSAN MILLER
+                        `
             }
         ]
     },
@@ -868,7 +876,7 @@ var moduleTest = {
             return new Promise((resolve, reject) => {
                 var backValue = null;
                 state.articleDetailList.forEach((item) => {
-                    if(item.chunk == value.chunk){
+                    if(Number(item.chunk) == Number(value.chunk)){
                         backValue = item;
                     }
                 });

@@ -110,7 +110,7 @@
         dom.onmouseout = function(){
                self.setHeightTop();
         }
-
+        
         this.setHeightTop = function(){
             const self = this;
             self.setTimeout = setTimeout(function(){
@@ -131,586 +131,7 @@
         data() {
             return {
                orgList: null,
-               lists: [
-                   {
-                       name: "1234",
-                       childrens: [
-                           {
-                               name: "aa",
-                               childrens: [
-                                   {
-                                       name: "test1",
-                                       chunk: '123' //查询数据的凭证
-                                   },
-                                   {
-                                       name: "test2",
-                                       chunk: '123'
-                                   },
-                                   {
-                                       name: "9876543"
-                                   },
-                                   {
-                                       name: "45678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "2020年1月"
-                                   },
-                                   {
-                                       name: "2020年2月"
-                                   },
-                                   {
-                                       name: "9876543"
-                                   },
-                                   {
-                                       name: "45678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "2020年1月"
-                                   },
-                                   {
-                                       name: "2020年2月"
-                                   },
-                                   {
-                                       name: "9876543"
-                                   },
-                                   {
-                                       name: "45678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "2020年1月"
-                                   },
-                                   {
-                                       name: "2020年2月"
-                                   },
-                                   {
-                                       name: "9876543"
-                                   },
-                                   {
-                                       name: "45678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "5678910结束"
-                                   }
-                               ]
-                           },
-                           {
-                               name: "bbbb",
-                               childrens: [
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "2345678"
-                                   }
-                               ]
-                           },
-                           {
-                               name: "cccc"
-                           },
-                           {
-                               name: "ddddd"
-                           },
-                           {
-                               name: "eeeee"
-                           },
-                           {
-                               name: "fffff",
-                               childrens: [
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "2345678"
-                                   },
-                                   {
-                                       name: "1234567"
-                                   },
-                                   {
-                                       name: "2345678"
-                                   }
-                               ]
-                           },
-                           {
-                               name: "ggggg 结束"
-                           }
-                       ]
-                   },
-                   {
-                       name: "2",
-                       childrens: [
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb结束"
-                           }
-                       ]
-                   },
-                   {
-                       name: "3",
-                       childrens: [
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb"
-                           },
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb"
-                           },
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb"
-                           },
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb"
-                           },
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb"
-                           },
-                           {
-                               name: "aaaa"
-                           },
-                           {
-                               name: "bbbb 结束"
-                           }
-                       ]
-                   },
-                   {
-                       name: "4",
-                       childrens: []
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }, {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }, 
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }, 
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }, {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }, 
-                   {
-                       name: "5",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   },
-                   {
-                       name: "结束",
-                       childrens: [
-                           {
-                               name: "测试1"
-                           },
-                           {
-                               name: "测试2"
-                           },
-                           {
-                               name: "测试3"
-                           },
-                           {
-                               name: "测试4 结束",
-                               childrens: [
-                                   {
-                                       name: "88899"
-                                   }
-                               ]
-                           }
-                       ]
-                   }
-               ],
+               lists: [],
                ListChoose: 0, //第一个choose
                secondShow: false,
                secondListChoose: null, //第二个choose
@@ -865,12 +286,11 @@
                 },
                 searchClear: null
             }
-        },
+        },    
         created(){
             const self = this;
             this.$nextTick(() => {
-                obj1 = new set(this.$refs.list, self.lists,49, 160);
-                self.orgList = JSON.parse(JSON.stringify(self.lists));
+                self.getStoreData();
             });
         },
         beforeRouteEnter (to, from, next) {
@@ -884,6 +304,20 @@
             });
         },
         methods:{
+            getStoreData(){
+                const self = this;
+                this.lists = JSON.parse(JSON.stringify(this.$store.state.moduleTest.lists));
+                self.orgList = JSON.parse(JSON.stringify(self.lists));
+                var allLength = 0;
+                for(var item in this.lists){
+                    if(this.lists[item].childrens.length > allLength){
+                        allLength = this.lists[item].childrens.length;
+                    }
+                }
+                setTimeout(function(){
+                    obj1 = new set(self.$refs.list, self.lists, 49, 180);
+                },100);
+            },
             changeListMenu(i){
                 const self = this;
                 this.ListChoose = i;
@@ -929,35 +363,30 @@
                 const self = this;
                 self.threeListChoose = i;
                 obj3.value = i;
-                obj3.setHeightTop();
+                
+                var backValue = this.getArticleDetail();     
+
                 var time3 = setTimeout(function(){
-                    self.isShowOverBlock = false;
+                    // 
                 },1000);
+            },
+            getArticleDetail(){
+                var self = this;
+                var chunk = this.lists[self.ListChoose].childrens[self.secondListChoose].childrens[self.threeListChoose];
+                var back = this.$store.dispatch('getDetailArticleTest',chunk);
+                back.then((value) => {
+                    obj3.setHeightTop();
+                    var timeSet = setTimeout(function(){
+                        self.isShowOverBlock = false;
+                        self.text = value;
+                    }, 1000);
+                });
             },
             searchList(){
                 const self = this;
                 clearTimeout(self.searchClear);
                 let newList = [
-                    // {
-                    // name: "查询结果",
-                    // childrens: [
-                        // {
-                        //   name: "查询结果",
-                        //   childrens: [{
-                        //       name: "测试1",
-                        //       childrens: [
-                        //           {
-                        //               name: "名称1"
-                        //           }
-                        //       ]
-                        //   },{
-                        //       name: "测试2"
-                        //   },{
-                        //       name: "测试3"
-                        //   }]
-                        // }
-                    // ]
-                // }
+                   
                 ];
                 var lists = JSON.parse(JSON.stringify(self.orgList));
                 self.searchClear = setTimeout(function(){
@@ -1251,9 +680,8 @@
         }
     }
     .menus-list, .menus-list2, .menus-list3{
-        // opacity: 0;
         width: calc(25% - 40px);
-        max-height: 160px;
+        max-height: 180px;
         overflow: hidden;
         position: absolute;
         left: 0px;

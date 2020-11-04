@@ -1,16 +1,4 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script src="./allwords.js"></script>
-<body>
-    
-</body>
-<script>
-    var str = `
-    Dear Reader,
+Dear Reader,
 
 November is a very big month, and I wanted you to have all the information you need to take full advantage of the changing aspects. I went back to October to put your life in context and to show you specifically how different—and better—November would be for you.
 
@@ -152,28 +140,12 @@ You will be thinking about your work life at month’s end when a lunar eclipse 
 Read more: https://www.astrologyzone.com/forecasts/capricorn-horoscope-for-november-2020/10/#ixzz6co7vQ2tA
 
 
-   ` ;
 
-    var arr = str.split(" ");
-    // arr.forEach((item) => {
-       
-    //     console.log(item);
-    // });
-    var back = str;
-    var i = 0;
-    all.forEach((item) => {
-        reg = eval("/"+item[0]+"/gi");
-        var trans = back.replace(reg, item[1]+'*');
-        if(trans == back){
 
-        }else{
-            back = trans;
-            i = i + 1;
-        }
-    })
 
-    console.log("使用了"+i+"个单词");
-    console.log("翻译了"+back.match(/\*/g).length+"个单词");
-    console.log(back);
-</script>
-</html>
+
+
+
+
+
+

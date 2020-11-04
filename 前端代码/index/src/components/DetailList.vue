@@ -55,13 +55,13 @@
                         <div class="title">{{item.name}}</div>
                         <div class="list-all" v-for="(file, oneKey) in item.childrens" :key="oneKey">
                             <div class="title">{{file.name}}</div>
-                            <div class="item" v-for="(items, key) in file.childrens" :key="key">{{items.name}}</div>
+                            <div class="item" v-for="(items, key) in file.childrens" :key="key"  @click="selectThreeMenu(key, keys, oneKey)">{{items.name}}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="none-message" v-if="lists.length == 0">暂无数据</div>
-            <div class="back-detail" @click="isShowOverBlock = false;"></div>
+            <div class="back-detail      " @click="isShowOverBlock = false;"></div>
             <input class="search-box" placeholder="查询 /" v-model="searchValue" @input="searchList"/>
         </div>
         <div :class="{'text-detail':true, 'isVague': isShowOverBlock || isLoading}">
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="call-back" @click="changePath"></div>
-            <div class="translate">译</div>
+            <div :class="{'translate':true, 'translateed':isTranslate}" @click="changeTranslate">译</div>
             <div class="text-place" @click="showBlock">位置 》 位置2 》 具体位置</div>
         </div>
         <div>
@@ -82,7 +82,7 @@
             <div class="detail-bottom"></div>
             <div class="detail-right"></div>
         </div>
-        <div class="loading" v-if="isLoading">
+        <div :class="{'loading':true, 'loading-animation':isLoaingAnimation}" v-if="isLoading">
             <div class="demo5">
                 <div class="inline-1"></div>
                 <div class="inline-2"></div>
@@ -153,7 +153,10 @@
                    
                },
                searchClear: null,
-               isLoading: false
+               isLoading: false,
+               isLoaingAnimation: false,
+               isTranslate: false,
+               orgArtcle: ''
             }
         },    
         created(){
@@ -229,13 +232,30 @@
                     clearTimeout(time4);
                 }, 100);
             },
-            selectThreeMenu(i){
+            selectThreeMenu(i, firstClick, secondClick){
                 const self = this;
+                if(firstClick != undefined){
+                    self.ListChoose = firstClick;
+                }
+                if(secondClick != undefined){
+                    self.secondListChoose = secondClick;
+                }
+
                 self.threeListChoose = i;
-                obj3.value = i;
-                
+                if(obj3){
+                    obj3.value = i;
+                }
+
                 var chunk = this.lists[self.ListChoose].childrens[self.secondListChoose].childrens[self.threeListChoose];
-                var backValue = this.getArticleDetail(chunk);     
+                var backValue = this.getArticleDetail(chunk); 
+                if(chunk.chunk){
+                    self.$router.push({
+                        path: 'article',
+                        query: {
+                            chunk: Number(chunk.chunk)
+                        }
+                    });  
+                }
             },
             getArticleDetail(chunk){
                 var self = this;
@@ -243,21 +263,28 @@
                 if(obj3){
                     obj3.setHeightTop();
                 }
+
                 self.isLoading = true;
+                self.isShowOverBlock = false;
                 back.then((value) => {
-                    self.isShowOverBlock = false;
-                    var timeSet = setTimeout(function(){
-                        self.isLoading = false;
-                        if(value){
-                            self.text = JSON.parse(JSON.stringify(value));
-                            self.setDetailText();
-                        }else{
-                            self.text = {
-                                title: "暂无数据"
-                            };
-                        }
+                    var timeSet = setTimeout(function(){ //模拟加载时间长度
+                           self.isLoaingAnimation = true;
+                           var timeOut = setTimeout(function(){ //这个不是模拟，这个是为了显示的时候有个过度
+                               self.isLoaingAnimation = false
+                               self.isLoading = false;
+                                if(value){
+                                    self.text = JSON.parse(JSON.stringify(value));
+                                    self.setDetailText();
+                                }else{
+                                    self.text = {
+                                        title: "暂无数据"
+                                    };
+                                }
+                                clearTimeout(timeOut);
+                           }, 300);
+                            
                         clearTimeout(timeSet);
-                    }, 1000);
+                    }, 1000); 
                 });
             },
             setDetailText(){
@@ -268,6 +295,38 @@
                 self.text.content = self.text.content.replace(/\(http.+\)/g,'');
                 self.text.content = self.text.content.replace(/\s\s\s\s\s\s\s\s\s/g,'++++');
                 self.text.content = self.text.content.replace(/(\++\+)/g, '<br/>');
+                self.orgArtcle = self.text.content;
+            },
+            changeTranslate(){
+                const self = this;
+                this.isTranslate = !this.isTranslate;
+                if(this.isTranslate){
+                    var arr = self.text.content.split('<br/>');
+
+                    var newText = '';
+                    var newArr = (this.getTranslate(self.text.content)).split('<br/>');
+
+                    arr.forEach((item, key) => {
+                        newText = newText + item;
+                        newText = newText +`<div class="translate-text">`+ newArr[key]+`</div><br/>`;
+                        // +``+`</div>`;
+                        // item
+                    });
+                    self.text.content = newText;
+                }else{
+                     self.text.content = self.orgArtcle;
+                }
+            },
+            getTranslate(value){
+                var textswords = value.split(" ");
+                var trans = value;
+                var allWord = this.$store.state.allWords.allWords;
+                allWord.forEach((item) => {
+                    // console.log(item);
+                    var reg = eval("/"+item[0]+"/gi");
+                    trans = trans.replace(reg, '**'+(item[1]+'**'));
+                });
+                return trans;
             },
             searchList(){
                 const self = this;
@@ -408,7 +467,9 @@
             top: 50%;
             left: 50%;
             margin-top: -25px;
-            margin-left: --25px;
+            margin-left: -25px;
+            opacity: 1;
+            transition: all ease 0.5s;
         }
         .demo5 .inline-1, .demo5 .inline-2, .inline-3{
             position: absolute;
@@ -434,6 +495,11 @@
             border: 1px solid #a09fef;
             animation: go5 3s ease-in-out 1s infinite;
         }
+}
+.loading-animation{
+    .demo5{
+        opacity: 0;
+    }
 }
  @keyframes go5 {
     0% { transform: rotateY(180deg) rotateX(40deg);}
@@ -837,7 +903,7 @@
                 font-size: 16px;
                 line-height: 26px;
                 padding-bottom: 160px;
-                text-align: right;
+                text-align: left;
             }
         }
     }
@@ -865,12 +931,13 @@
             transform: rotate(45deg);
             transition: all ease 0.3s;
         }
-        &:hover{
-            color: grey;
-            border: 2px solid grey;
-            &::after{
-                transform: rotate(45deg) scale(0);
-            }
+        
+    }
+    .translate:hover, .translateed{
+        color: grey;
+        border: 2px solid grey;
+        &::after{
+            transform: rotate(45deg) scale(0);
         }
     }
     .text-place{
@@ -1102,4 +1169,5 @@
     }
     
 }
+
 </style>

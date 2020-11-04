@@ -75,11 +75,11 @@ export default {
   methods: {
       changePath(value){
           this.$router.push({
-            path: 'article',
-            query: {
-                chunk: value
-            }
-        });
+                path: 'article',
+                query: {
+                    chunk: value
+                }
+          });
       }
   }
 }

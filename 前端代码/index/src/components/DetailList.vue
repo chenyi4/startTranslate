@@ -161,8 +161,12 @@
         },    
         created(){
             const self = this;
+            console.log(this.$store.state.allArticles);
             this.$nextTick(() => {
                 self.getStoreData();
+                if(self.chunk){
+                    self.getArticleDetail({chunk: self.chunk});
+                }
             });
         },
         beforeRouteEnter (to, from, next) {
@@ -170,7 +174,7 @@
             next(vm => {
                 if(chunk){
                     vm.isShowOverBlock = false;
-                    vm.getArticleDetail({chunk: chunk});
+                    vm.chunk = chunk;
                 }else{
                     vm.isShowOverBlock = true;
                 }
@@ -260,6 +264,7 @@
             getArticleDetail(chunk){
                 var self = this;
                 var back = this.$store.dispatch('getDetailArticleTest',chunk);
+               
                 if(obj3){
                     obj3.setHeightTop();
                 }
@@ -289,13 +294,19 @@
             },
             setDetailText(){
                 const self = this;
-                // console.log(self.text);
                 //替换所有的.为换行
                 self.text.content = self.text.content.replace(/\./g,'.<br/>');
                 self.text.content = self.text.content.replace(/\(http.+\)/g,'');
                 self.text.content = self.text.content.replace(/\s\s\s\s\s\s\s\s\s/g,'++++');
                 self.text.content = self.text.content.replace(/(\++\+)/g, '<br/>');
                 self.orgArtcle = self.text.content;
+                if(this.$route.query.isTranslate == '1'){
+                    this.isTranslate = false;
+                    this.changeTranslate();
+                }else{
+                    this.isTranslate = true;
+                    this.changeTranslate();
+                }
             },
             changeTranslate(){
                 const self = this;
@@ -313,8 +324,30 @@
                         // item
                     });
                     self.text.content = newText;
+                    self.changeRouter(true);
                 }else{
-                     self.text.content = self.orgArtcle;
+                    self.text.content = self.orgArtcle;
+                    self.changeRouter(false);
+                }
+            },
+            changeRouter(isSetTranslate){
+                var chunk = this.$route.query.chunk;
+                if(isSetTranslate){
+                    this.$router.push({
+                        path: 'article',
+                        query: {
+                            chunk: chunk,
+                            isTranslate: '1'
+                        }
+                    });
+                }else{
+                    this.$router.push({
+                        path: 'article',
+                        query: {
+                            chunk: chunk,
+                            isTranslate: '0'
+                        }
+                    });
                 }
             },
             getTranslate(value){
@@ -322,7 +355,6 @@
                 var trans = value;
                 var allWord = this.$store.state.allWords.allWords;
                 allWord.forEach((item) => {
-                    // console.log(item);
                     var reg = eval("/"+item[0]+"/gi");
                     trans = trans.replace(reg, '**'+(item[1]+'**'));
                 });

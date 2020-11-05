@@ -3,13 +3,12 @@
       <!-- <img  src="./../assets/mobile.jpg"> -->
       <div :class="{'box':true, 'box-show': isShow}">
           <div class="more" @click="changePath()">more</div>
-          <div class="box-size" @click="changePath(20203920)">
-                <div class="line">202007</div>
-                <div class="line">202007</div>
-                <div class="line">202007</div>
-                <div class="line">202007</div>
-                <div class="line">202007</div>
-                <div class="line">202007</div>
+          <div class="box-size" >
+                <div 
+                 class="line" 
+                 v-for="(item, key) in articles"
+                 @click="changePath(item.chunk)"
+                 :key="key">{{item.title}}</div>
           </div>
           <div class="square">
           </div>  
@@ -29,22 +28,36 @@ export default {
   },
   data() {
       return {
-          isShow: true
+          isShow: true,
+          articles: []
       }
   },
   created(){
       const self = this;
+      self.getData();
       setTimeout(()=>{
           self.isShow = false;
       }, 400);
   },
   methods: {
+      getData(){
+          const self = this;
+          var back = this.$store.dispatch('getNewArticle', {
+              num: 6,
+              content: false
+          });
+          back.then((value) => {
+              self.articles = value;
+              console.log(self.articles);
+          });
+      },
       changePath(value){
           if(value){
               this.$router.push({
                     path: 'article',
                     query: {
-                        chunk: value
+                        chunk: value,
+                        isTranslate: '0'
                     }
               });
           }else{

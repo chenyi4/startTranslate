@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="none-message" v-if="lists.length == 0">暂无数据</div>
-            <div class="back-detail      " @click="isShowOverBlock = false;"></div>
+            <div class="back-detail" @click="isShowOverBlock = false;"></div>
             <input class="search-box" placeholder="查询 /" v-model="searchValue" @input="searchList"/>
         </div>
         <div :class="{'text-detail':true, 'isVague': isShowOverBlock || isLoading}">

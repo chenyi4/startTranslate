@@ -16,15 +16,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import { panel } from '@/api/index';
 
-const back = panel.save({
-   type: "all",
-});
-
-back.then((value) => {
-  console.log(value);
-});
 
 export default {
   name: 'App',
@@ -54,7 +46,6 @@ export default {
     }
   },
   destroyed(){
-    alert("11111111");
   }
 }
 </script>

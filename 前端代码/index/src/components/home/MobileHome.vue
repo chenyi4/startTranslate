@@ -21,6 +21,8 @@
 </template>
 <script>
 //移动端取5条数据
+import { panel } from '@/api/index';
+
 export default {
   name: 'MobileHome',
   props: {
@@ -32,24 +34,39 @@ export default {
           articles: []
       }
   },
+  beforeRouteEnter (to, from, next) {
+        next(vm => {
+            
+        });
+  },
   created(){
       const self = this;
       self.getData();
-      setTimeout(()=>{
-          self.isShow = false;
-      }, 400);
   },
   methods: {
       getData(){
+          console.log("执行了");
           const self = this;
-          var back = this.$store.dispatch('getNewArticle', {
-              num: 6,
-              content: false
+          const back = panel.getHome({
+             num: 5,
           });
+
           back.then((value) => {
-              self.articles = value;
-              console.log(self.articles);
-          });
+              console.log(value);
+             self.articles = value.data;
+             self.isShow = false;
+          });    
+        //从axios里面取数据
+
+
+        //   var back = this.$store.dispatch('getNewArticle', {
+        //       num: 6,
+        //       content: false
+        //   });
+        //   back.then((value) => {
+        //       self.articles = value;
+        //       console.log(self.articles);
+        //   });
       },
       changePath(value){
           if(value){

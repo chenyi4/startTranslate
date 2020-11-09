@@ -3,30 +3,31 @@
        <!-- <img  src="./../assets/table.jpg"> -->
        <div :class="{'center':true, 'center-change':isShow}">
            <div class="center-box">
-               <div class="line line-1" @click="changePath(20203920)">
+               <div :class="{'line': true,'line-1':true}"  >
                    <div class="pic"></div>
-                   <div>
-                       <div class="title">All About Eclipses for Coping with Them</div>
+                   <div v-if="articles.length>0">
+                       <div class="title">{{articles[0].title}}</div>
                        <div class="line"></div>
-                       <div class="content">All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them</div>
+                       <div class="content">{{articles[0].content}}</div>
                    </div>
                </div>
-               <div class="line line-2" @click="changePath(20203922)">
-                   <div class="content">
-                       All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
-                       All About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with ThemAll About Eclipses for Coping with Them
-                   </div>
-                   <div class="head">
-                       <div class="pic"></div>
-                       <div class="name">
-                           <div class="top">Susam millerk</div>
-                           <div class="bottom">ludom</div>
-                       </div>
-                   </div>
+               <div class="line line-2"  @click="changePath(20203922)">
+                    <div class="content" v-if="articles.length>1">
+                        {{articles[1].content}}
+                    </div>
+                    <div class="head" v-if="articles.length>1">
+                        <div class="pic"></div>
+                        <div class="name">
+                            <div class="top">Susam millerk</div>
+                            <div class="bottom">ludom</div>
+                        </div>
+                    </div>
                </div>
                <div class="line line-3" @click="changePath(20203923)">
                    <div class="pic"></div>
-                   <div class="title"> All About Eclipses for Coping with ThemAll About Eclipses for Coping</div>
+                   <div class="title" v-if="articles.length>2"> 
+                       {{articles[2].content}}
+                   </div>
                     <div class="arrow"></div>
                     <!-- 五边形 -->
                     <div class="triggle-box">
@@ -56,6 +57,7 @@
   </div>
 </template>
 <script>
+import { panel } from '@/api/index';
 export default {
   name: 'TableHome', //桌面显示
   props: {
@@ -63,16 +65,28 @@ export default {
   },
   data() {
       return {
-          isShow: true
+          isShow: true,
+          articles: []
       }
   },
   created(){
       const self = this;
-      setTimeout(()=>{
-          self.isShow = false;
-      }, 400);
+      self.getData();
   },
   methods: {
+      getData(){
+          
+          const self = this;
+          const back = panel.getHome({
+             num: 3,
+          });
+
+          back.then((value) => {
+             self.isShow = false;
+             self.articles = value.data;
+             self.isShow = false;
+          });    
+      },
       changePath(value){
           this.$router.push({
                 path: 'article',

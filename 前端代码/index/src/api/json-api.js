@@ -76,10 +76,22 @@ class JsonAPI {
     }
 
     _request(url, args, conf){
-        return this._axios.post(url, { args }, conf)
-            .then(res => {
-                return res.data;
-        });
+        if(conf == 'get'){
+            return this._axios({
+                method: 'get',
+                url: url,
+                params: args
+            });
+            // return this._axios.get(url, args, conf)
+            //     .then(res => {
+            //     return res.data;
+            // });
+        }else{
+            return this._axios.post(url, { args }, conf)
+                .then(res => {
+                    return res.data;
+            });
+        }
     }
 };
 

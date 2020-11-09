@@ -15,7 +15,7 @@ app.get('/getHomeList', (req, res) => {
         allData = allData.splice(0, num);
         if(num == 6){
             allData.forEach((item) => {
-                item.content = item.content.splice(0, 100);
+                item.content = item.content.splice(0, 300);
                 newArr.push(item); 
             });
         }else{

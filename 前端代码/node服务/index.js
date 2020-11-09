@@ -21,14 +21,18 @@ app.get('/getHomeList', (req, res) => {
         }else{
             newArr = allData;
         }
-        res.send(newArr);
+        setTimeout(function(){
+            res.send(newArr);
+        }, 3000);
     });
 });
 
 app.get('/getAllArticleList', (req, res) => {
     fs.readFile("./alldatas/allList.json", function(err, data) {
         var allData = JSON.parse(data);
-        res.send(allData);
+        setTimeout(function(){
+            res.send(allData);
+        },3000);
     });
 });
 
@@ -42,7 +46,9 @@ app.get('/getArticle', (req, res) =>{
                 article = item;
             }
         });
-        res.send(article);
+        setTimeout(function(){
+            res.send(article);
+        }, 3000);
     });
 });
 

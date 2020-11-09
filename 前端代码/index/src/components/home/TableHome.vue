@@ -53,6 +53,13 @@
                     <div class="triggle3"></div>
                </div>
            </div>
+           <div :class="{'loading':true, 'loading-animation':isLoaingAnimation}" v-if="isLoading">
+                <div class="demo5">
+                    <div class="inline-1"></div>
+                    <div class="inline-2"></div>
+                    <div class="inline-3"></div>
+                </div>
+            </div>
        </div>
   </div>
 </template>
@@ -66,7 +73,9 @@ export default {
   data() {
       return {
           isShow: true,
-          articles: []
+          articles: [],
+          isLoaingAnimation: false,
+          isLoading: true
       }
   },
   created(){
@@ -84,7 +93,10 @@ export default {
           back.then((value) => {
              self.isShow = false;
              self.articles = value.data;
-             self.isShow = false;
+             self.isLoading = false;
+             var timeout1 = setTimeout(function(){
+                 self.isLoaingAnimation = false;
+             },200);
           });    
       },
       changePath(value){

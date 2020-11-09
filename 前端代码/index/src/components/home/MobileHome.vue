@@ -1,9 +1,9 @@
 <template>
   <div class="home">
       <!-- <img  src="./../assets/mobile.jpg"> -->
-      <div :class="{'box':true, 'box-show': isShow}">
+      <div :class="{'box':true, 'box-show': isShow}" >
           <div class="more" @click="changePath()">more</div>
-          <div class="box-size" >
+          <div class="box-size">
                 <div 
                  class="line" 
                  v-for="(item, key) in articles"
@@ -16,6 +16,13 @@
               <div class="left-name">Translate</div>
               <div class="right-name">翻译</div>
           </div>
+      </div>
+      <div :class="{'loading':true, 'loading-animation':isLoaingAnimation}" v-if="isLoading">
+            <div class="demo5">
+                <div class="inline-1"></div>
+                <div class="inline-2"></div>
+                <div class="inline-3"></div>
+            </div>
       </div>
   </div>
 </template>
@@ -31,7 +38,9 @@ export default {
   data() {
       return {
           isShow: true,
-          articles: []
+          articles: [],
+          isLoaingAnimation: false,
+          isLoading: true
       }
   },
   beforeRouteEnter (to, from, next) {
@@ -52,7 +61,12 @@ export default {
 
           back.then((value) => {
              self.articles = value.data;
-             self.isShow = false;
+             self.isLoading = false;
+             var time1 = setTimeout(function(){
+                 self.isLoaingAnimation = false;
+                 self.isShow = false;
+                 clearTimeout(time1);
+             },100);
           });    
         //从axios里面取数据
 
@@ -88,11 +102,9 @@ export default {
 <style scoped lang="scss">
 .home{
     width: 100%;
-    // background: #624b5d;
     box-sizing: border-box;
     position: relative;
     display: none;
-    // padding: 20px 30px;
     img{
         width: 100%;
     }
@@ -127,13 +139,13 @@ export default {
             font-size: 6.5vw;
             padding-top: 3.2vw;
             padding-bottom: 1.7vw;
-            @for $i from 0 through 20
+            border-bottom: 1px solid white;
+             @for $i from 0 through 20
             {
                 &:nth-of-type(#{$i}){
                     transition: transform ease-in 0.5s 0.13s*$i, opacity ease 0.3s 0.14s*$i;
                 }
             }
-            border-bottom: 1px solid white;
             &:after{
                 content: '';
                 position: absolute;
@@ -182,6 +194,7 @@ export default {
     .box-show{
         opacity: 0;
         .line{
+            background: red;
             transform: rotateX(360deg) translateX(-20px);
             opacity: 0;
         }

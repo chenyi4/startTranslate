@@ -68,7 +68,7 @@
             <div class="text-all-box">
                 <div class="text-detail-all">
                     <div class="title">{{text.title}}</div>
-                    <div class="title-date">{{text.data}}</div>
+                    <div class="title-date">{{getDetailDay(text.data)}}</div>
                     <div class="detail-text" v-html="text.content"></div>
                 </div>
             </div>
@@ -92,6 +92,7 @@
     </div>
 </template>
 <script>
+    import { panel } from '@/api/index';
     var obj1, obj2, obj3;
     function set(dom, lists, itemHeight, boxHeight){
         this.dom = dom;
@@ -161,7 +162,6 @@
         },    
         created(){
             const self = this;
-            console.log(this.$store.state.allArticles);
             this.$nextTick(() => {
                 self.getStoreData();
                 if(self.chunk){
@@ -183,17 +183,19 @@
         methods:{
             getStoreData(){
                 const self = this;
-                this.lists = JSON.parse(JSON.stringify(this.$store.state.moduleTest.lists));
-                self.orgList = JSON.parse(JSON.stringify(self.lists));
-                var allLength = 0;
-                for(var item in this.lists){
-                    if(this.lists[item].childrens.length > allLength){
-                        allLength = this.lists[item].childrens.length;
+                const requestValue = panel.getAllArticles(); //获取全部的数据
+                requestValue.then((value) => {
+                    self.lists = self.orgList = JSON.parse(JSON.stringify(value.data));
+                    var allLength = 0;
+                    for(var item in self.lists){
+                        if(self.lists[item].childrens.length > allLength){
+                            allLength = self.lists[item].childrens.length;
+                        }
                     }
-                }
-                setTimeout(function(){
-                    obj1 = new set(self.$refs.list, self.lists, 49, 220);
-                },100);
+                    setTimeout(function(){
+                        obj1 = new set(self.$refs.list, self.lists, 49, 220);
+                    },100);
+                });
             },
             changeListMenu(i){
                 const self = this;
@@ -263,34 +265,34 @@
             },
             getArticleDetail(chunk){
                 var self = this;
-                var back = this.$store.dispatch('getDetailArticleTest',chunk);
-               
+                //获取数据 文章详情
+                
                 if(obj3){
                     obj3.setHeightTop();
                 }
+                
+                const requestValue = panel.getArticleDetail({
+                    chunk: chunk.chunk
+                });//获取当前数据
 
                 self.isLoading = true;
                 self.isShowOverBlock = false;
-                back.then((value) => {
-                    var timeSet = setTimeout(function(){ //模拟加载时间长度
-                           self.isLoaingAnimation = true;
-                           var timeOut = setTimeout(function(){ //这个不是模拟，这个是为了显示的时候有个过度
-                               self.isLoaingAnimation = false
-                               self.isLoading = false;
-                                if(value){
-                                    self.text = JSON.parse(JSON.stringify(value));
-                                    self.setDetailText();
-                                }else{
-                                    self.text = {
-                                        title: "暂无数据"
-                                    };
-                                }
+                requestValue.then((value) => {
+                            self.isLoaingAnimation = true;
+                            var timeOut = setTimeout(function(){ //这个不是模拟，这个是为了显示的时候有个过度
+                                self.isLoaingAnimation = false
                                 clearTimeout(timeOut);
-                           }, 300);
-                            
-                        clearTimeout(timeSet);
-                    }, 1000); 
-                });
+                                self.isLoading = false;
+                                    if(value){
+                                        self.text = JSON.parse(JSON.stringify(value.data));
+                                        self.setDetailText();
+                                    }else{
+                                        self.text = {
+                                            title: "暂无数据"
+                                        };
+                                    }
+                            }, 300);
+                    });
             },
             setDetailText(){
                 const self = this;
@@ -467,6 +469,17 @@
                  this.$router.push({
                     path: '/'
                 });
+            },
+            getDetailDay(value){
+               var date = new Date( value* 1000);
+               var Y = date.getFullYear() + '-';
+                var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+                var D = date.getDate() + '';
+                var h = date.getHours() + ':';
+                var m = date.getMinutes() + ':';
+                var s = date.getSeconds();
+                return Y + M + D;
+              
             }
         }
     }

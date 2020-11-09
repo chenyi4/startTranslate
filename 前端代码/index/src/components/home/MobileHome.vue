@@ -45,14 +45,12 @@ export default {
   },
   methods: {
       getData(){
-          console.log("执行了");
           const self = this;
           const back = panel.getHome({
              num: 5,
           });
 
           back.then((value) => {
-              console.log(value);
              self.articles = value.data;
              self.isShow = false;
           });    

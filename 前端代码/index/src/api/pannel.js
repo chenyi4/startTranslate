@@ -11,9 +11,15 @@ class Panel {
         return jsonAPI._request('/login', project, this._conf);
     }
     getHome(params){
-        console.log(params);
         return jsonAPI._request('/getHomeList', params, "get");
-        
+    }
+
+    getAllArticles(){
+        return jsonAPI._request('/getAllArticleList', {}, "get");
+    }
+
+    getArticleDetail(params){
+        return jsonAPI._request('/getArticle', params, "get");
     }
     // save(project){
     //     return jsonAPI.requestWithAuth('/list', null, this._conf);

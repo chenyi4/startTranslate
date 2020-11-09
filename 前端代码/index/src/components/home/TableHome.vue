@@ -3,7 +3,7 @@
        <!-- <img  src="./../assets/table.jpg"> -->
        <div :class="{'center':true, 'center-change':isShow}">
            <div class="center-box">
-               <div :class="{'line': true,'line-1':true}"  >
+               <div :class="{'line': true,'line-1':true}" @click="changePath(articles[0].chunk)" >
                    <div class="pic"></div>
                    <div v-if="articles.length>0">
                        <div class="title">{{articles[0].title}}</div>
@@ -11,7 +11,7 @@
                        <div class="content">{{articles[0].content}}</div>
                    </div>
                </div>
-               <div class="line line-2"  @click="changePath(20203922)">
+               <div class="line line-2"  @click="changePath(articles[1].chunk)">
                     <div class="content" v-if="articles.length>1">
                         {{articles[1].content}}
                     </div>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                </div>
-               <div class="line line-3" @click="changePath(20203923)">
+               <div class="line line-3" @click="changePath(articles[2].chunk)">
                    <div class="pic"></div>
                    <div class="title" v-if="articles.length>2"> 
                        {{articles[2].content}}

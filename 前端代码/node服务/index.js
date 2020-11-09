@@ -46,9 +46,13 @@ app.get('/getArticle', (req, res) =>{
                 article = item;
             }
         });
-        setTimeout(function(){
+        fs.readFile("./alldatas/202011.txt", 'utf-8',function(err, textValue) {
+            console.log(textValue);
+            article.content = (textValue);
             res.send(article);
-        }, 3000);
+        });
+
+       
     });
 });
 

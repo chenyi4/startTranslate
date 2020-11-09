@@ -321,7 +321,8 @@
 
                     arr.forEach((item, key) => {
                         newText = newText + item;
-                        newText = newText +`<div class="translate-text">`+ newArr[key]+`</div><br/>`;
+                        newText = newText +`<div class="translate-text">`+ newArr[key]+`</div>`;
+                        newText = newText +`<textarea class="textarea"></textarea><br/>`;
                         // +``+`</div>`;
                         // item
                     });
@@ -485,6 +486,7 @@
     }
 </script>
 <style scoped lang="scss">
+
 .detail-list{
     position: fixed;
     width: 100%;
@@ -834,12 +836,14 @@
         top: calc(50% - 50px);
         letter-spacing: 10px;
     }
+    
 }
 .cover-list-show{
     display: block;
     background: rgba(5,5,5,0.45);
    
 }
+
 .text-detail{
     width: 100%;
     height: 100%;
@@ -924,6 +928,7 @@
         }
         
     }
+    
     .translate:hover, .translateed{
         color: grey;
         border: 2px solid grey;

@@ -77,8 +77,6 @@
             <div class="text-place" @click="showBlock">
                 <span v-if="!ListChoose && lists.length == 0">具体列表</span>
                 <span v-if="lists.length >0 && ListChoose >=0">{{lists[ListChoose].name}} 》</span> 
-                <!-- <span v-if="lists.length >0 && ListChoose >= 0 && secondListChoose >=0">{{lists[ListChoose].childrens[secondListChoose].name}} 》</span> -->
-                <!-- <span v-if="lists.length >0 && threeListChoose >= 0 && secondListChoose >=0">{{lists[ListChoose].childrens[secondListChoose].childrens[threeListChoose]}}</span> -->
             </div>
         </div>
         <div>
@@ -350,10 +348,9 @@
                     arr.forEach((item, key) => {
                         newText = newText + item;
                         newText = newText +`<div class="translate-text">`+ newArr[key]+`</div>`;
-                        newText = newText +`<textarea class="textarea"></textarea><br/>`;
-                        // +``+`</div>`;
-                        // item
+                        // newText = newText +`<textarea class="textarea"></textarea><br/>`;
                     });
+                    
                     self.text.content = newText;
                     self.changeRouter(true);
                 }else{

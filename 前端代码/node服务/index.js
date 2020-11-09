@@ -47,7 +47,6 @@ app.get('/getArticle', (req, res) =>{
             }
         });
         fs.readFile("./alldatas/202011.txt", 'utf-8',function(err, textValue) {
-            console.log(textValue);
             article.content = (textValue);
             res.send(article);
         });

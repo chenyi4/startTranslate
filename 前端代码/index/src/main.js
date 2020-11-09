@@ -6,6 +6,12 @@ import Home from './components/home/Home.vue';
 import store from './store'
 import './assets/all.scss';
 
+
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(VueRouter);
 
 Vue.config.productionTip = false;

@@ -65,7 +65,7 @@
             <input class="search-box" placeholder="查询 /" v-model="searchValue" @input="searchList"/>
         </div>
         <div :class="{'text-detail':true, 'isVague': isShowOverBlock || isLoading}">
-            <div class="text-all-box">
+            <div class="text-all-box" ref="textBox">
                 <div class="text-detail-all">
                     <div class="title">{{text.title}}</div>
                     <div class="title-date">{{getDetailDay(text.data)}}</div>
@@ -74,7 +74,12 @@
             </div>
             <div class="call-back" @click="changePath"></div>
             <div :class="{'translate':true, 'translateed':isTranslate}" @click="changeTranslate">译</div>
-            <div class="text-place" @click="showBlock">位置 》 位置2 》 具体位置</div>
+            <div class="text-place" @click="showBlock">
+                <span v-if="!ListChoose && lists.length == 0">具体列表</span>
+                <span v-if="lists.length >0 && ListChoose >=0">{{lists[ListChoose].name}} 》</span> 
+                <!-- <span v-if="lists.length >0 && ListChoose >= 0 && secondListChoose >=0">{{lists[ListChoose].childrens[secondListChoose].name}} 》</span> -->
+                <!-- <span v-if="lists.length >0 && threeListChoose >= 0 && secondListChoose >=0">{{lists[ListChoose].childrens[secondListChoose].childrens[threeListChoose]}}</span> -->
+            </div>
         </div>
         <div>
             <div class="detail-top"></div>    
@@ -132,6 +137,7 @@
             }, 300);
         }
     }
+
     export default {
         name: 'DetailList',
         props: {
@@ -159,7 +165,13 @@
                isTranslate: false,
                orgArtcle: ''
             }
-        },    
+        }, 
+        destroyed(){
+            
+        },
+        mounted(){
+            this.handleScroll();
+        },   
         created(){
             const self = this;
             this.$nextTick(() => {
@@ -171,6 +183,7 @@
         },
         beforeRouteEnter (to, from, next) {
             var chunk = to.query.chunk;
+            
             next(vm => {
                 if(chunk){
                     vm.isShowOverBlock = false;
@@ -181,6 +194,21 @@
             });
         },
         methods:{
+            handleScroll(){
+                const self = this;
+                this.$refs.textBox.addEventListener('scroll', function(e){
+                     self.$router.push({
+                        path: 'article',
+                        query: {...self.$router.currentRoute.query, top: e.target.scrollTop},
+                    });  
+                }, true);
+
+                if(this.$router.currentRoute.query.top){
+                    setTimeout(function(){
+                        document.getElementsByClassName('text-all-box')[0].scrollTop = Number(self.$router.currentRoute.query.top);
+                    }, 500);
+                }
+            },
             getStoreData(){
                 const self = this;
                 const requestValue = panel.getAllArticles(); //获取全部的数据
@@ -257,7 +285,7 @@
                 if(chunk.chunk){
                     self.$router.push({
                         path: 'article',
-                        query: {
+                        query: {...self.$router.currentRoute.query,
                             chunk: Number(chunk.chunk)
                         }
                     });  
@@ -334,23 +362,30 @@
                 }
             },
             changeRouter(isSetTranslate){
-                var chunk = this.$route.query.chunk;
-                if(isSetTranslate){
-                    this.$router.push({
-                        path: 'article',
-                        query: {
-                            chunk: chunk,
-                            isTranslate: '1'
-                        }
-                    });
-                }else{
-                    this.$router.push({
-                        path: 'article',
-                        query: {
-                            chunk: chunk,
-                            isTranslate: '0'
-                        }
-                    });
+                try{
+                    const self = this;
+                    var chunk = this.$route.query.chunk;
+                    if(isSetTranslate){
+                        this.$router.push({
+                            path: 'article',
+                            query: {
+                                ...self.$router.currentRoute.query,
+                                chunk: chunk,
+                                isTranslate: '1'
+                            }
+                        });
+                    }else{
+                        this.$router.push({
+                            path: 'article',
+                            query: {
+                                ...self.$router.currentRoute.query,
+                                chunk: chunk,
+                                isTranslate: '0'
+                            }
+                        });
+                    }
+                }catch(err){
+
                 }
             },
             getTranslate(value){
@@ -484,6 +519,7 @@
             }
         }
     }
+
 </script>
 <style scoped lang="scss">
 

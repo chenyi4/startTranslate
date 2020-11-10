@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="menus-list2" ref="list2">
+            <div class="menus-li         st2" ref="list2">
                 <div id="box2" v-if="secondShow">
                     <div :class="{'line-one':true, 'line-change': key == secondListChoose}" 
                     @click="changeSencodMenu(key)"
@@ -348,7 +348,7 @@
                     arr.forEach((item, key) => {
                         newText = newText + item;
                         newText = newText +`<div class="translate-text">`+ newArr[key]+`</div>`;
-                        // newText = newText +`<textarea class="textarea"></textarea><br/>`;
+                        newText = newText +`<textarea class="textarea"></textarea><br/>`;
                     });
                     
                     self.text.content = newText;
@@ -382,7 +382,6 @@
                         });
                     }
                 }catch(err){
-
                 }
             },
             getTranslate(value){

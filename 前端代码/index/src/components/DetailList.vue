@@ -48,7 +48,7 @@
                         {{item.name}}
                     </div>
                 </div>
-            </div>
+            </div>     
             <div class="mobile-list">
                 <div class="mobile-list-box">
                     <div class="file-item" v-for="(item, keys) in lists" :key="keys">
@@ -92,7 +92,7 @@
                 <div class="inline-3"></div>
             </div>
         </div>
-    </div>
+    </div>   
 </template>
 <script>
     import { panel } from '@/api/index';

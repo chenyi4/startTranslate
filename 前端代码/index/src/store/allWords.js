@@ -958,7 +958,10 @@ var allWords = {
             ["promote", "促进/晋升/推动"],
             ["security", "安全"],
             ["stability", "稳定性"],
-            ["instance","例子/实例/举...为例"]
+            ["instance","例子/实例/举...为例"],
+            ["sudden", "突然的/忽然的/骤然的"],
+            ["ultimately","最终/最后"],
+            ["frustrations", "挫折/阻止/挫败"]
         ],
         otherWords: [
             

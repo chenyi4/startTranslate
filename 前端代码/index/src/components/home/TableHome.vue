@@ -8,12 +8,12 @@
                    <div v-if="articles.length>0">
                        <div class="title">{{articles[0].title}}</div>
                        <div class="line"></div>
-                       <div class="content">{{articles[0].content}}</div>
+                       <div class="content">{{(articles[0].content).substring(1,60)}}</div>
                    </div>
                </div>
                <div class="line line-2"  @click="changePath(articles[1].chunk)">
                     <div class="content" v-if="articles.length>1">
-                        {{articles[1].content}}
+                        {{(articles[1].content).substring(1,230)}}
                     </div>
                     <div class="head" v-if="articles.length>1">
                         <div class="pic"></div>
@@ -26,7 +26,7 @@
                <div class="line line-3" @click="changePath(articles[2].chunk)">
                    <div class="pic"></div>
                    <div class="title" v-if="articles.length>2"> 
-                       {{articles[2].content}}
+                       {{(articles[2].content).substring(1,100)}}
                    </div>
                     <div class="arrow"></div>
                     <!-- 五边形 -->
@@ -87,7 +87,8 @@ export default {
           
           const self = this;
           const back = panel.getHome({
-             num: 3,
+             num:3,
+             content:1
           });
 
           back.then((value) => {

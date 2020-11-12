@@ -13,6 +13,8 @@ class JsonAPI {
             responseType: 'json',
             timeout: 10000
         });
+       
+        
     }
 
     set authConf(conf){
@@ -24,7 +26,7 @@ class JsonAPI {
             throw new Error('No authorization conf.');
         }
         var {url, account} = this._authConf;
-        return this._request(url, account).then(
+        return this._request(this.baseUrl+url, account).then(
             data => {
                 if(data.result && data.result.token){
                     this._authHeader = {
@@ -41,6 +43,7 @@ class JsonAPI {
     }
 
     requestWithAuth(url, args, conf){
+        
         if(!this._authHeader){
             return Promise.resolve(null);
         }
@@ -51,7 +54,7 @@ class JsonAPI {
 
         _.assign(conf.headers, this._authHeader);
         return new Promise((resolve, reject) => {
-            this._request(url, args, conf)
+            this._request(this.baseUrl+url, args, conf)
                 .then(resolve)
                 .catch(err => {
                     var data = err.response.data;
@@ -60,7 +63,7 @@ class JsonAPI {
                             successful => {
                                 if(successful) {
                                     _.assign(conf.headers, this.authHeader);
-                                    return this._request(url, args, conf);
+                                    return this._request(this.baseUrl+url, args, conf);
                                 }
 
                                 return null;
@@ -76,10 +79,11 @@ class JsonAPI {
     }
 
     _request(url, args, conf){
+        this.baseUrl = process.env.NODE_ENV == 'production'?process.env.VUE_APP_HOST:'./index.php';
         if(conf == 'get'){
             return this._axios({
                 method: 'get',
-                url: url,
+                url: this.baseUrl+url,
                 params: args
             });
             // return this._axios.get(url, args, conf)
@@ -87,7 +91,7 @@ class JsonAPI {
             //     return res.data;
             // });
         }else{
-            return this._axios.post(url, { args }, conf)
+            return this._axios.post(this.baseUrl+url, { args }, conf)
                 .then(res => {
                     return res.data;
             });

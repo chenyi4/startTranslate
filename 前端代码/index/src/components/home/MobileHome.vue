@@ -56,7 +56,8 @@ export default {
       getData(){
           const self = this;
           const back = panel.getHome({
-             num: 5,
+               num:5,
+               content:0
           });
 
           back.then((value) => {

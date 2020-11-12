@@ -11,20 +11,18 @@ class Panel {
         return jsonAPI._request('/login', project, this._conf);
     }
     getHome(params){
-        return jsonAPI._request('/getHomeList', params, "get");
+        // return jsonAPI._request('/getHomeList', params, "get");
+        return jsonAPI._request('/index/article/homeList', params, "get");
     }
 
     getAllArticles(){
-        return jsonAPI._request('/getAllArticleList', {}, "get");
+        return jsonAPI._request('/index/article/detailList', {}, "get");
+        // return jsonAPI._request('/getAllArticleList', {}, "get");
     }
 
     getArticleDetail(params){
-        return jsonAPI._request('/getArticle', params, "get");
+        return jsonAPI._request('/index/article/getDetailList', params, "get");
     }
-    // save(project){
-    //     return jsonAPI.requestWithAuth('/list', null, this._conf);
-    // }
-
     delete(params){
         return jsonAPI.requestWithAuth('delete', params, this._conf);
     }

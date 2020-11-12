@@ -94,7 +94,6 @@
                     "descript" => substr($content,0,250),
                     "parent" => $name?$name:"无"
                 ];
-               
             }
             if(is_dir($a)){
                 if($v=='.' || $v=='..'){

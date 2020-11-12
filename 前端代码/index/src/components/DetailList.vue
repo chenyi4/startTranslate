@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="menus-li         st2" ref="list2">
+            <div class="menus-list2" ref="list2">
                 <div id="box2" v-if="secondShow">
                     <div :class="{'line-one':true, 'line-change': key == secondListChoose}" 
                     @click="changeSencodMenu(key)"
@@ -67,8 +67,8 @@
         <div :class="{'text-detail':true, 'isVague': isShowOverBlock || isLoading}">
             <div class="text-all-box" ref="textBox">
                 <div class="text-detail-all">
-                    <div class="title">{{text.title}}</div>
-                    <div class="title-date">{{getDetailDay(text.data)}}</div>
+                    <div class="title" v-if="text.name">{{(text.name).replace(".txt", "")}}</div>
+                    <div class="title-date">{{getDetailDay(text.createtime)}}</div>
                     <div class="detail-text" v-html="text.content"></div>
                 </div>
             </div>

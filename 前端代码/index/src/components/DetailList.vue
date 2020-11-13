@@ -20,7 +20,7 @@
             </div>
             <div class="menus-list" ref="list">
                 <div id="box1">
-                    <div 
+                    <div
                         :class="{'line-one':true, 'line-change': key == ListChoose}" 
                         v-for="(item, key) in lists" :key="key"
                         @click="changeListMenu(key)"
@@ -279,12 +279,12 @@
                 }
 
                 var chunk = this.lists[self.ListChoose].childrens[self.secondListChoose].childrens[self.threeListChoose];
-                var backValue = this.getArticleDetail(chunk); 
-                if(chunk.chunk){
+                var backValue = this.getArticleDetail({...chunk, chunk: chunk.textid}); 
+                if(chunk.textid){
                     self.$router.push({
                         path: 'article',
                         query: {...self.$router.currentRoute.query,
-                            chunk: Number(chunk.chunk)
+                            chunk: Number(chunk.textid)
                         }
                     });  
                 }
@@ -298,7 +298,7 @@
                 }
                 
                 const requestValue = panel.getArticleDetail({
-                    chunk: chunk.chunk
+                    textid: chunk.chunk
                 });//获取当前数据
 
                 self.isLoading = true;
@@ -348,7 +348,7 @@
                     arr.forEach((item, key) => {
                         newText = newText + item;
                         newText = newText +`<div class="translate-text">`+ newArr[key]+`</div>`;
-                        newText = newText +`<textarea class="textarea"></textarea><br/>`;
+                        // newText = newText +`<textarea class="textarea"></textarea><br/>`;
                     });
                     
                     self.text.content = newText;

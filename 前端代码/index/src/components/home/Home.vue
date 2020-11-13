@@ -1,11 +1,13 @@
 <template>
     <div>
-        <TableHome></TableHome>
-        <MobileHome></MobileHome>
+        <component :is="componentName"></component>
+        <!-- <TableHome></TableHome>
+        <MobileHome></MobileHome> -->
     </div>
 </template>
 
 <script>
+
 import MobileHome from './MobileHome.vue';
 import TableHome from './TableHome.vue';
 
@@ -16,12 +18,16 @@ export default {
   },
   data() {
       return {
-          
+          componentName: 'TableHome'
       }
   },
   created(){
       const self = this;
-      
+      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+          self.componentName = 'MobileHome';
+      }else{
+          self.componentName = 'TableHome';
+      }
   },
   components: {
       MobileHome,

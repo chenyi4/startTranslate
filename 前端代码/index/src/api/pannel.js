@@ -19,7 +19,7 @@ class Panel {
         return jsonAPI._request('/index/article/detailList', {}, "get");
         // return jsonAPI._request('/getAllArticleList', {}, "get");
     }
-
+   
     getArticleDetail(params){
         return jsonAPI._request('/index/article/getDetailList', params, "get");
     }

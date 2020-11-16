@@ -8,7 +8,7 @@
                    <div v-if="articles.length>0">
                        <div class="title">{{articles[0].title}}</div>
                        <div class="line"></div>
-                       <div class="content">{{(articles[0].content).substring(1,60)}}</div>
+                       <div class="content">{{(articles[0].content).substring(1,260)}}</div>
                    </div>
                </div>
                <div class="line line-2"  @click="changePath(articles[1].textid)">

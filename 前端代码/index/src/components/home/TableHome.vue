@@ -5,7 +5,7 @@
            <div class="center-box">
                <div :class="{'line': true,'line-1':true}" @click="changePath(articles[0].textid)" >
                    <div class="pic"></div>
-                   <div v-if="articles.length>0">
+                   <div v-if="articles.length>0" class="inline-box">
                        <div class="title">{{articles[0].title}}</div>
                        <div class="line"></div>
                        <div class="content">{{(articles[0].content).substring(1,260)}}</div>
@@ -168,6 +168,10 @@ export default {
                 cursor: pointer;
                 opacity: 1;
                 transition: top ease 0.2s 0.25s,width ease 0.2s, opacity ease 0.8s;
+                .inline-box{
+                    position: relative;
+                    top: 30px;
+                }
                 .pic{
                     width: calc(100% - 60px);
                     position: relative;
@@ -474,6 +478,9 @@ export default {
                 .line-1{
                     .pic{
                         margin-top: 30px;
+                    }
+                    .inline-box{
+                        top: 63px;
                     }
                 }
                 .line-2{

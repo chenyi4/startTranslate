@@ -17,17 +17,19 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
-
 export default {
   name: 'App',
   components: {
-   
+      
   },
   data(){
     return {
       transitionName: 'change-frame',
       isSet: false
     }
+  },
+  created(){
+     document.getElementById("loading").style.display = "none";
   },
   methods: {
     changeRouter(){

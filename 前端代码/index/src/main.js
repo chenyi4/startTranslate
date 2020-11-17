@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
-import DetailList from './components/DetailList.vue';
+import DetailList from './components/transDetail/DetailList.vue';
 import Home from './components/home/Home.vue';
 import store from './store'
 import './assets/all.scss';
@@ -12,7 +12,7 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-Vue.use(VueRouter);
+Vue.use(VueRouter);    
 
 Vue.config.productionTip = false;
 // const Foo = {template: DetailList};
@@ -21,7 +21,7 @@ const Bar = { template: '<div>bar</div>' };
 const routes = [
   { path: '/article', component: DetailList },
   { path: '/', component: Home },
-];
+];     
 
 const router = new VueRouter({
     routes // short for `routes: routes`

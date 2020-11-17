@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
 import DetailList from './components/transDetail/DetailList.vue';
+import Login from './components/login/Login.vue';
 import Home from './components/home/Home.vue';
 import store from './store'
 import './assets/all.scss';
@@ -21,6 +22,7 @@ const Bar = { template: '<div>bar</div>' };
 const routes = [
   { path: '/article', component: DetailList },
   { path: '/', component: Home },
+  { path: '/login', component: Login}
 ];     
 
 const router = new VueRouter({

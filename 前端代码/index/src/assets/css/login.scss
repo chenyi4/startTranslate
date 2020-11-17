@@ -1,0 +1,14 @@
+.login{
+    text-align: right;
+    padding: 10px;
+    font-size: 18px;
+    color: grey;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 590px) {
+    .login{
+        color: white;
+        font-size: 16px;
+    }
+}

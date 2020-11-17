@@ -1,0 +1,76 @@
+// 路由的动画跳整
+.change-frame-enter-active, .change-frame-leave-active{
+    transition: all linear .55s;
+    opacity: 1;
+  }
+ .change-frame-enter, .change-frame-leave-to{
+    opacity: 0;
+ }
+
+ .translate-text{
+   color: grey;
+ }
+ .textarea{
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #cdcdcd;
+    margin-top: 5px;
+ }
+
+ .loading{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 100;
+  background: rgba(0,0,0,0.1);
+  .demo5{
+          width: 50px;
+          height: 50px;
+          margin: 0 auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -25px;
+          margin-left: -25px;
+          opacity: 1;
+          transition: all ease 0.5s;
+      }
+      .demo5 .inline-1, .demo5 .inline-2, .inline-3{
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          border: 3px solid #a09fef;
+          border-radius: 50px;
+          animation: go5 3s ease-in-out 0s infinite;
+      }
+      .demo5 .inline-2{
+          width: 40px;
+          height: 40px;
+          left: 6px;
+          top: 6px;
+          border: 2px solid #a09fef;
+          animation: go5 3s ease-in-out 0.5s infinite;
+      }
+      .demo5 .inline-3{
+          width: 26px;
+          height: 26px;
+          left: 14px;
+          top: 14px;
+          border: 1px solid #a09fef;
+          animation: go5 3s ease-in-out 1s infinite;
+      }
+}
+.loading-animation{
+  .demo5{
+      opacity: 0;
+  }
+}
+@keyframes go5 {
+  0% { transform: rotateY(180deg) rotateX(40deg);}
+  50% { transform: rotateY(-180deg); border-color: black;}
+  100% { transform: rotateY(180deg) rotateX(40deg);}
+}
+  
+  

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div @click="gotoLogin" class="login">login</div>
         <component :is="componentName"></component>
         <!-- <TableHome></TableHome>
         <MobileHome></MobileHome> -->
@@ -27,6 +28,13 @@ export default {
           self.componentName = 'MobileHome';
       }else{
           self.componentName = 'TableHome';
+      }
+  },
+  methods:{
+      gotoLogin(){
+           this.$router.push({
+                path: 'login',
+           });
       }
   },
   components: {

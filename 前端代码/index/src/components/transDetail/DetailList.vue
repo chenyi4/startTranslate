@@ -521,7 +521,6 @@
 
 </script>
 <style scoped lang="scss">
-
 .detail-list{
     position: fixed;
     width: 100%;

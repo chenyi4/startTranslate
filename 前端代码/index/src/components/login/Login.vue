@@ -6,12 +6,10 @@
             <div class="show-box-1">
                 <input class="name"/>
                 <input class="password"/>
+                <div class="submit"></div>
             </div>
             <div class="triggle-tran-1"></div>
             <div class="triggle-tran-2"></div>
-            <div class="text-box">
-                
-            </div>
         </div>
     </div>
 </template>
@@ -23,7 +21,7 @@ export default {
         },
         data() {
             return {
-
+                
             }
         }
 }
@@ -83,6 +81,12 @@ $blueColor: #759bff;
                    border: 1px solid $blueColor;
                 }
             }
+            .submit{
+               width: 76%;
+               color: white;
+               background: $blueColor;
+               border-radius: 8px;
+            }
         }
         
         .triggle-tran-1, .triggle-tran-2{
@@ -118,8 +122,6 @@ $blueColor: #759bff;
                 display: none;
             }
         }
-        
-        
     }
 }
 .background-line{

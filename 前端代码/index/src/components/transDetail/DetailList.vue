@@ -531,7 +531,6 @@
     top: 0px;
     // border: 5px solid #2b2257;
     box-sizing: border-box;
-    
 }
 .cover-list{
     width: 100%;

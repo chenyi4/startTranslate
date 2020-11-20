@@ -1,16 +1,22 @@
 <template>
     <div class="login-box">
         <div class="background-line"></div>
-        <div class="true-login-box">
+        <div class="true-login-box true-login-box-ed">
             <div class="show-box-2"></div>
             <div class="show-box-1">
-                <div>
+                <div class="icon-relative">
                     <input class="name"/>
+                    <div class="icon-show">
+                        <img src="./../../assets/pics/user.png"/>
+                    </div>
                 </div>
-                <div>
+                <div class="icon-relative">
                     <input class="password" type="password"/>
-                </div>
-                <div class="submit">登 录</div>
+                    <div class="icon-show">
+                        <img src="./../../assets/pics/password.png"/>
+                    </div>
+                </div>   
+                <div class="submit" @click="login">登 录</div>
             </div>
             <div class="triggle-tran-1"></div>
             <div class="triggle-tran-2"></div>
@@ -24,10 +30,21 @@
                 <div class="circle7"></div>
             </div>
         </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+            <defs>
+                <filter id="filter-music">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.000001" numOctaves="1" result="warp" />
+                    <feOffset dx="0" dy="-90" result="warpOffset" />
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warpOffset" />
+                </filter>
+            </defs>   
+        </svg>
     </div>
 </template>
       
 <script>
+import { TweenMax } from 'gsap';
+// TimelineLite
 export default {
     name: 'loginModule',
         props: {
@@ -35,6 +52,11 @@ export default {
         data() {
             return {
                 
+            }
+        },
+        methods: {
+            login(){
+                console.log("login 登录");
             }
         }
 }
@@ -49,6 +71,9 @@ $blueColor: #759bff;
     position: absolute;
     background: #f5f5f5;
     overflow: hidden;
+    left: 0;
+    top: 0;
+    animation: mymove 1s 1 0.5s;
     .true-login-box{
         width: 400px;
         height: 380px;
@@ -85,7 +110,7 @@ $blueColor: #759bff;
                 padding: 10px 10px;
                 box-sizing: border-box;
                 border-radius: 6px;
-                padding-left: 50px;
+                padding-left: 40px;
                 z-index: 10;
                 margin-bottom: 15px;
                 transition: border 0.6s ease;
@@ -142,6 +167,7 @@ $blueColor: #759bff;
             }
         }
     }
+   
     .show-logo-box{
         width: 100px;
         height: 100px;
@@ -207,14 +233,39 @@ $blueColor: #759bff;
             background: black;
         }
     }
+    .icon-relative{
+        position: relative;
+        .icon-show{
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            // background: grey;
+            position: absolute;
+            top: 30px;
+            left: 14%;
+            z-index: 10;
+            img{
+                width: 80%;
+                position: relative;
+                top: 3px;
+                filter:opacity(0.5);
+            }
+        }
+    }
 }
+
 .background-line{
     width: 100%;
     padding-top: 100%;
     top: -55%;
     left: 8%;
-   
     background-image: radial-gradient(rgba(0,0,0,0.3) 15%, rgba(0,0,0,0) 65%, rgba(0,0,0,0) 0%);
     position: absolute;
 }
+@keyframes mymove
+{
+    from { position: fixed;}
+    to { position: absolute;}
+}
+
 </style>

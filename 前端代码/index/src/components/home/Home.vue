@@ -6,7 +6,6 @@
         <MobileHome></MobileHome> -->
     </div>
 </template>
-
 <script>
 
 import MobileHome from './MobileHome.vue';

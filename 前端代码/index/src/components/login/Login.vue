@@ -1,5 +1,5 @@
 <template>
-    <div class="login-box">
+    <div class="login-box" >
         <div class="background-line"></div>
         <div class="true-login-box true-login-box-ed">
             <div class="show-box-2"></div>
@@ -16,18 +16,18 @@
                         <img src="./../../assets/pics/password.png"/>
                     </div>
                 </div>   
-                <div class="submit" @click="login">登 录</div>
+                <div class="submit" @click="login" id="circle1">登 录</div>
             </div>
             <div class="triggle-tran-1"></div>
             <div class="triggle-tran-2"></div>
-            <div class="show-logo-box">
-                <div class="circle2"></div>
-                <div class="circle1"></div>
-                <div class="circle3"></div>
-                <div class="circle4"></div>
-                <div class="circle5"></div>
-                <div class="circle6"></div>
-                <div class="circle7"></div>
+            <div class="show-logo-box" >
+                <div class="circle2" id="cir2"></div>
+                <div class="circle1" id="cir1"></div>
+                <div class="circle3" id="cir3"></div>    
+                <div class="circle4" id="cir4"></div>
+                <div class="circle5" id="cir5"></div>
+                <div class="circle6" id="cir6"></div>
+                <div class="circle7" id="cir7"></div>
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
@@ -43,7 +43,8 @@
 </template>
       
 <script>
-import { TweenMax } from 'gsap';
+import { TimelineLite, Power0} from 'gsap';
+// , TimelineLite
 // TimelineLite
 export default {
     name: 'loginModule',
@@ -51,13 +52,55 @@ export default {
         },
         data() {
             return {
-                
+                tweenLine: null,
+                isLoading: false
             }
         },
         methods: {
             login(){
-                console.log("login 登录");
-            }
+                const self = this;
+                if(self.isLoading) return false;
+                self.isLoading = true;
+                var circle1 = document.getElementById('circle1');
+                circle1.style.filter = 'url(#filter-music)';
+                this.tweenLine.play();
+                var timeline = setTimeout(function(){
+                    circle1.style.filter = '';
+                    self.tweenLine.pause();
+                    self.isLoading = false;
+                    clearTimeout(timeline);
+                },1200);
+
+            },
+            setPage(){
+
+                var turb = document.querySelectorAll('#filter-music feTurbulence')[0];
+                var circle1 = document.getElementById('circle1');
+                var turbVal = { val: 0.000001 };
+                var turbValX = { val: 0.000001 };
+                var tl = new TimelineLite({
+                    paused: true,
+                    onComplete: function(){
+                        tl.reverse();
+                    },
+                    onReverseComplete: function(){
+                        tl.restart();
+                    },
+                    onUpdate: function(){
+                        turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
+                    }
+                });
+                tl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone}, 0);
+                tl.to(turbVal, 0.1, { val: 0.2 , ease: Power0.easeNone }, 0);
+                this.tweenLine = tl;
+
+           }
+        },
+        created(){
+            const self = this;
+            setTimeout(function(){
+                self.setPage();
+            },300);
         }
 }
 </script>
@@ -130,6 +173,11 @@ $blueColor: #759bff;
                position: relative;
                top: 16px;
                cursor: pointer;
+               outline: 90px solid transparent;
+               transition: all ease 0.8s;
+               &:hover{
+                   background: black;
+               }
             }
         }
         
@@ -184,6 +232,7 @@ $blueColor: #759bff;
             position: absolute;
             left: 45px;
             top: 20px;
+            outline: 90px solid transparent;
         }
         .circle2{
             left: 54px;

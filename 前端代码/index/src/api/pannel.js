@@ -23,9 +23,6 @@ class Panel {
     getArticleDetail(params){
         return jsonAPI._request('/index/article/getDetailList', params, "get");
     }
-    delete(params){
-        return jsonAPI.requestWithAuth('delete', params, this._conf);
-    }
 }
 
 export default new Panel();

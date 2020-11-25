@@ -20,7 +20,7 @@
             </div>
             <div class="triggle-tran-1"></div>
             <div class="triggle-tran-2"></div>
-            <div class="show-logo-box" >
+            <div class="show-logo-box">
                 <div class="circle2" id="cir2"></div>
                 <div class="circle1" id="cir1"></div>
                 <div class="circle3" id="cir3"></div>    
@@ -41,9 +41,9 @@
         </svg>
     </div>
 </template>
-      
 <script>
 import { TimelineLite, Power0} from 'gsap';
+import { login } from '@/api/index';
 // , TimelineLite
 // TimelineLite
 export default {
@@ -59,8 +59,13 @@ export default {
         methods: {
             login(){
                 const self = this;
+                login.loginPost({
+                    username: 'chenyi',
+                    password: '111111'
+                });
                 if(self.isLoading) return false;
                 self.isLoading = true;
+                
                 var circle1 = document.getElementById('circle1');
                 circle1.style.filter = 'url(#filter-music)';
                 this.tweenLine.play();
@@ -100,6 +105,7 @@ export default {
             const self = this;
             setTimeout(function(){
                 self.setPage();
+               
             },300);
         }
 }

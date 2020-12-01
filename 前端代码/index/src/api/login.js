@@ -10,7 +10,7 @@ class Login {
     
     loginPost(project){
         //登陆接口，登陆
-        return jsonAPI._request('/index/login/loginset', {}, 'get');
+        return jsonAPI._request('/index/Loginpost/index', project, 'post');
     }
 }
 

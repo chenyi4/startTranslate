@@ -2,7 +2,7 @@
   <div id="app">
     <!-- 路由视图显示 -->
     <transition :name="transitionName">
-        <router-view></router-view> 
+        <router-view></router-view>
     </transition>
      <!-- <div @click="changeRouter">测试路由跳转</div> -->
     <!-- 测试内容 -->
@@ -16,7 +16,6 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   components: {
@@ -44,7 +43,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-
+        
     }
   },
   destroyed(){

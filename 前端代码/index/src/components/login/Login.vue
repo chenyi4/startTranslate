@@ -1,22 +1,22 @@
 <template>
-    <div class="login-box" >
+    <div class="login-box">
         <div class="background-line"></div>
         <div class="true-login-box true-login-box-ed">
             <div class="show-box-2"></div>
             <div class="show-box-1">
                 <div class="icon-relative">
-                    <input class="name"/>
+                    <input class="name" v-model="data.username"/>
                     <div class="icon-show">
                         <img src="./../../assets/pics/user.png"/>
                     </div>
                 </div>
                 <div class="icon-relative">
-                    <input class="password" type="password"/>
+                    <input class="password" type="password" v-model="data.password"/>
                     <div class="icon-show">
                         <img src="./../../assets/pics/password.png"/>
                     </div>
                 </div>   
-                <div class="submit" @click="login" id="circle1">登 录</div>
+                <div class="submit" @click="login">登 录</div>
             </div>
             <div class="triggle-tran-1"></div>
             <div class="triggle-tran-2"></div>
@@ -39,11 +39,16 @@
                 </filter>
             </defs>   
         </svg>
+        <div class="cover-login" v-if="isLoading"></div>
+        <div class="result" v-if="isLoading"></div>
+        <div :class="{'loginpost':true, 'loginpost-ed':isLoading }" id="circle1" >
+        </div>
     </div>
 </template>
 <script>
 import { TimelineLite, Power0} from 'gsap';
 import { login } from '@/api/index';
+import hexMD5 from '@/assets/js/md5.js';
 // , TimelineLite
 // TimelineLite
 export default {
@@ -53,15 +58,22 @@ export default {
         data() {
             return {
                 tweenLine: null,
-                isLoading: false
+                isLoading: false,
+                data: {
+                    username: '',
+                    password: ''
+                }
             }
         },
         methods: {
             login(){
                 const self = this;
-                login.loginPost({
-                    username: 'chenyi',
-                    password: '111111'
+                var back = login.loginPost({
+                    username: self.data.username,
+                    password: hexMD5(self.data.password)
+                });
+                back.then((value) => {
+                    console.log(value);
                 });
                 if(self.isLoading) return false;
                 self.isLoading = true;
@@ -75,10 +87,8 @@ export default {
                     self.isLoading = false;
                     clearTimeout(timeline);
                 },1200);
-
             },
             setPage(){
-
                 var turb = document.querySelectorAll('#filter-music feTurbulence')[0];
                 var circle1 = document.getElementById('circle1');
                 var turbVal = { val: 0.000001 };
@@ -98,14 +108,12 @@ export default {
                 tl.to(turbValX, 0.4, { val: 0.04, ease: Power0.easeNone}, 0);
                 tl.to(turbVal, 0.1, { val: 0.2 , ease: Power0.easeNone }, 0);
                 this.tweenLine = tl;
-
            }
         },
         created(){
             const self = this;
             setTimeout(function(){
                 self.setPage();
-               
             },300);
         }
 }
@@ -182,7 +190,7 @@ $blueColor: #759bff;
                outline: 90px solid transparent;
                transition: all ease 0.8s;
                &:hover{
-                   background: black;
+                   background: #3f51b5;
                }
             }
         }
@@ -229,6 +237,7 @@ $blueColor: #759bff;
         top: 35px;
         left: 50%;
         margin-left: -50px;
+        //测试使用
         // background: grey;
         .circle1, .circle2,.circle3,.circle4,.circle6,.circle7{
             width: 40px;
@@ -307,6 +316,14 @@ $blueColor: #759bff;
             }
         }
     }
+    .cover-login{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 100;
+    }
 }
 
 .background-line{
@@ -322,5 +339,72 @@ $blueColor: #759bff;
     from { position: fixed;}
     to { position: absolute;}
 }
+@media screen and (max-width: 590px) {
+    .login-box{
+        width: 100%;
+        height: 100%;
+        background: white;
+        overflow: hidden;
+        .true-login-box{
+            margin-top: -130px;
+            .show-box-1{
+                box-shadow: none;
+                border-bottom: none;
+            }
+            .show-box-2{
+                border-bottom: none;
+            }
+        }
+        .background-line{
+            display: none;
+        }
+    }
+}
+.loginpost{
+    width: 0px;
+    height: 0px;
+    background: black;
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    // width: 600px;
+    // height: 600px;
+    transform: translate(-50%, -50%);
+    outline: 90px solid transparent;
+    transition: all ease 0.6s;
+    cursor: pointer;
+}
 
+.loginpost-ed{
+    width: 600px;
+    height: 600px;
+    border-radius: 600px;
+    background: #759bff;
+    cursor: pointer;
+}
+
+.result{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 22;
+    &::before, &::after{
+        content: '';
+        width: 10px;
+        height: 50px;
+        background: white;
+        position: absolute;
+        left: -10px;
+        top: 0px;
+        transform: rotate(90deg);
+    }
+    &::after{
+        height: 50px;
+        transform: rotate(90deg);
+    }
+}
 </style>

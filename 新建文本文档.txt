@@ -48,4 +48,5 @@ Xftp
 Xshell
 Xmanager Enterprise (Power Suite)
 Xshell Plus
+FinalShell
 

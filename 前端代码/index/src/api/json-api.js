@@ -91,7 +91,7 @@ class JsonAPI {
             //     return res.data;
             // });
         }else{
-            return this._axios.post(this.baseUrl+url, { args }, conf)
+            return this._axios.post(this.baseUrl+url, { ...args }, conf)
                 .then(res => {
                     return res.data;
             });

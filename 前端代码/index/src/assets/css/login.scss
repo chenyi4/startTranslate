@@ -9,7 +9,7 @@
         right: 10px;
         top: 10px;
         cursor: pointer;
-        transform: scale(0.9);
+        transform: scale(0.7);
         .head{
             width: 18px;
             height: 18px;
@@ -20,7 +20,7 @@
             box-sizing: border-box;
             border: 2px solid #759bff;
             transition: all ease-in 0.2s 0.15s;
-            border-right: 2px solid transparent;
+            border-right: 2px solid green;
         }
         .buttom{
             width: 40px;

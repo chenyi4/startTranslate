@@ -41,7 +41,7 @@
         </svg>
         <div class="cover-login" v-if="isLoading"></div>
         <div :class="{'loginpost':true, 'loginpost-ed':isLoading }" id="circle1" >
-            <div class="result"></div>
+            <div :class="{'result':true, 'result-pass':isPassword === true, 'result-bad':isPassword === false}"></div>
         </div>
     </div>
 </template>
@@ -62,18 +62,24 @@ export default {
                 data: {
                     username: '',
                     password: ''
-                }
+                },
+                isPassword: null
             }
         },
         methods: {
             login(){
                 const self = this;
+                self.isPassword = null;
                 var back = login.loginPost({
                     username: self.data.username,
                     password: hexMD5(self.data.password)
                 });
                 back.then((value) => {
-                    console.log(value);
+                    if(value.code == 1){
+                        self.isPassword = true;
+                    }else if(value.code == 0){
+                        self.isPassword = false;
+                    }
                 });
                 if(self.isLoading) return false;
                 self.isLoading = true;
@@ -112,6 +118,7 @@ export default {
         },
         created(){
             const self = this;
+            self.isPassword = null;
             setTimeout(function(){
                 self.setPage();
             },300);
@@ -368,8 +375,6 @@ $blueColor: #759bff;
     z-index: 20;
     left: 50%;
     top: 50%;
-    // width: 600px;
-    // height: 600px;
     transform: translate(-50%, -50%);
     outline: 90px solid transparent;
     transition: all ease 0.6s;
@@ -399,13 +404,31 @@ $blueColor: #759bff;
         height: 50px;
         background: white;
         position: absolute;
-        left: 12px;
-        top: 0px;
-        transform: rotate(90deg);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
     }
     &::after{
         height: 50px;
-        transform: rotate(90deg);
+    }
+}
+.result-bad{
+    transform: translate(-50%, -50%) scale(5);
+    &::before{
+        transform: translate(-50%, -50%) rotate(50deg);
+    }
+    &::after{
+        transform: translate(-50%, -50%) rotate(130deg);
+    }
+}
+.result-pass{
+    transform: translate(-50%, -60%) scale(5) rotate(-20deg);
+    &::before{
+        transform: translate(-50%, -50%) rotate(70deg) translateX(10px);
+    }
+    &::after{
+        height: 30px;
+        transform: translate(-50%, -50%) rotate(-20deg) translateX(-20px);
     }
 }
 </style>

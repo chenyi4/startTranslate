@@ -40,8 +40,8 @@
             </defs>   
         </svg>
         <div class="cover-login" v-if="isLoading"></div>
-        <div class="result" v-if="isLoading"></div>
         <div :class="{'loginpost':true, 'loginpost-ed':isLoading }" id="circle1" >
+            <div class="result"></div>
         </div>
     </div>
 </template>
@@ -374,6 +374,7 @@ $blueColor: #759bff;
     outline: 90px solid transparent;
     transition: all ease 0.6s;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .loginpost-ed{
@@ -398,7 +399,7 @@ $blueColor: #759bff;
         height: 50px;
         background: white;
         position: absolute;
-        left: -10px;
+        left: 12px;
         top: 0px;
         transform: rotate(90deg);
     }

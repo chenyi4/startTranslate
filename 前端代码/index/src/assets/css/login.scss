@@ -1,9 +1,51 @@
 .login{
     text-align: right;
-    padding: 10px;
     font-size: 18px;
-    color: grey;
     cursor: pointer;
+    .person-icon{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        transform: scale(0.9);
+        .head{
+            width: 18px;
+            height: 18px;
+            border-radius: 20px;
+            position: absolute;
+            left: 11px;
+            top: 0px;
+            box-sizing: border-box;
+            border: 2px solid #759bff;
+            transition: all ease-in 0.2s 0.15s;
+            border-right: 2px solid transparent;
+        }
+        .buttom{
+            width: 40px;
+            height: 11px;
+            border-radius: 10px;
+            position: absolute;
+            top: 24px;
+            left: 0px;
+            border: 2px solid #759bff;
+            box-sizing: border-box;
+            transform-origin: 50% 50%;
+            transition: all ease-in 0.1s;
+        }
+        &:hover{
+            .buttom{
+                transform: rotate(-6deg);
+                border-color: black;
+            }
+            .head{
+                transform: rotateZ(-90deg) translateY(-2px);
+                border-color: black;
+                border-right: 2px solid transparent;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 590px) {

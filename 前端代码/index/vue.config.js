@@ -3,7 +3,7 @@ module.exports = {
   runtimeCompiler: true, //路由的配置报错
   lintOnSave: false,
   devServer: {
-    port: 7771,
+    port: 7773,
     proxy: {
       '/': {
         // target: 'http://10.111111:8080', //
